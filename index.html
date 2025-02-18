@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Negal75's Projects</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <style>
+        /* Material Design Palette */
+        :root {
+            --primary: #2196F3;
+            --secondary: #9C27B0;
+            --background: #f5f5f5;
+            --text: #2b2b2b;
+            --text-secondary: #666;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            margin: 0;
+            padding-left: 1rem;
+        }
+
+        .main-content {
+            margin-top: 6rem;
+            padding: 2rem;
+            min-height: calc(100vh - 6rem);
+        }
+
+        .projects-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 2px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .project-title {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .project-link {
+            color: var(--secondary);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .project-link:hover {
+            text-decoration: underline;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-tag {
+            background-color: var(--secondary);
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 1rem;
+            font-size: 0.8rem;
+        }
+
+        .footer {
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+
+        .code-snippet {
+            background-color: white;
+            padding: 1rem;
+            border-left: 3px solid var(--secondary);
+            font-family: monospace;
+            margin: 1rem 0;
+        }
+
+        .project-icon {
+            font-size: 2rem;
+            margin-right: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>Negal75's Projects</h1>
+    </header>
+
+    <main class="main-content">
+        <div class="projects-container">
+            <!-- Project cards will be populated here -->
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2024 Negal75. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Sample GitHub repositories (replace with actual GitHub API data)
+        const repositories = [
+            {
+                name: 'Project Alpha',
+                description: 'An innovative solution for modern web applications',
+                url: '#',
+                tech: ['React', 'Node.js', 'PostgreSQL']
+            },
+            {
+                name: 'Beta Platform',
+                description: 'A comprehensive platform for data analysis',
+                url: '#',
+                tech: ['Python', 'Django', 'PostgreSQL']
+            },
+            // Add more repositories as needed
+        ];
+
+        // Function to create project cards
+        function createProjectCard(repo) {
+            const card = document.createElement('div');
+            card.className = 'project-card';
+            
+            const markup = `
+                <div class="project-icon">
+                    <i class="material-icons">code</i>
+                </div>
+                <h2 class="project-title">${repo.name}</h2>
+                <p class="project-description">${repo.description}</p>
+                <a href="${repo.url}" class="project-link">
+                    View Project <i class="material-icons">launch</i>
+                </a>
+                <div class="project-tech">
+                    ${repo.tech.map(tag => `<span class="tech-tag">${tag}</span>`).join('')}
+                </div>
+            `;
+            
+            card.innerHTML = markup;
+            return card;
+        }
+
+        // Populate projects container
+        const projectsContainer = document.querySelector('.projects-container');
+        repositories.forEach(repo => {
+            projectsContainer.appendChild(createProjectCard(repo));
+        });
+    </script>
+</body>
+</html>
