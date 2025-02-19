@@ -8,12 +8,64 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <style>
         :root {
-            --primary: #646464; 
-            --secondary: #37da40;
-            --background: #444444;
-            --text: #cdcdcd; 
-            --text-secondary: #e8e8e8; 
+          /* Catppuccin Latte */
+            --rosewater: #dc8a78;
+            --flamingo: #dd7878;
+            --pink: #ea76cb;
+            --mauve: #8839ef;
+            --red: #d20f39;
+            --maroon: #e64553;
+            --peach: #fe640b;
+            --yellow: #df8e1d;
+            --green: #40a02b;
+            --teal: #179299;
+            --sky: #04a5e5;
+            --sapphire: #209fb5;
+            --blue: #1e66f5;
+            --lavender: #7287fd;
+            --text: #4c4f69;
+            --subtext1: #5c5f77;
+            --subtext0: #6c6f85;
+            --overlay2: #7c7f93;
+            --overlay1: #8c8fa1;
+            --overlay0: #9ca0b0;
+            --surface2: #acb0be;
+            --surface1: #bcc0cc;
+            --surface0: #ccd0da;
+            --base: #eff1f5;
+            --mantle: #e6e9ef;
+            --crust: #dce0e8;
         }
+        /* Catppuccin Mocha (dark theme) */
+          .dark-theme {
+            --rosewater: #f5e0dc;
+            --flamingo: #f2cdcd;
+            --pink: #f5c2e7;
+            --mauve: #cba6f7;
+            --red: #f38ba8;
+            --maroon: #eba0ac;
+            --peach: #fab387;
+            --yellow: #f9e2af;
+            --green: #a6e3a1;
+            --teal: #94e2d5;
+            --sky: #89dceb;
+            --sapphire: #74c7ec;
+            --blue: #89b4fa;
+            --lavender: #b4befe;
+            --text: #cdd6f4;
+            --subtext1: #bac2de;
+            --subtext0: #a6adc8;
+            --overlay2: #9399b2;
+            --overlay1: #7f849c;
+            --overlay0: #6c7086;
+            --surface2: #585b70;
+            --surface1: #45475a;
+            --surface0: #313244;
+            --base: #1e1e2e;
+            --mantle: #181825;
+            --crust: #11111b;
+        }
+
 
         * {
             margin: 0;
@@ -23,31 +75,60 @@
         }
 
         body {
-            background-color: var(--background);
+            background-color: var(--base);
             color: var(--text);
             line-height: 1.6;
+              /* Initially apply dark theme */
+            --rosewater: #f5e0dc;
+            --flamingo: #f2cdcd;
+            --pink: #f5c2e7;
+            --mauve: #cba6f7;
+            --red: #f38ba8;
+            --maroon: #eba0ac;
+            --peach: #fab387;
+            --yellow: #f9e2af;
+            --green: #a6e3a1;
+            --teal: #94e2d5;
+            --sky: #89dceb;
+            --sapphire: #74c7ec;
+            --blue: #89b4fa;
+            --lavender: #b4befe;
+            --text: #cdd6f4;
+            --subtext1: #bac2de;
+            --subtext0: #a6adc8;
+            --overlay2: #9399b2;
+            --overlay1: #7f849c;
+            --overlay0: #6c7086;
+            --surface2: #585b70;
+            --surface1: #45475a;
+            --surface0: #313244;
+            --base: #1e1e2e;
+            --mantle: #181825;
+            --crust: #11111b;
         }
 
+
         .header {
-            background-color: var(--primary);
-            color: white;
+            background-color: var(--mantle);
+            color: var(--text);
             padding: 1rem;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             position: fixed;
             width: 100%;
             top: 0;
+            z-index: 100; /* Ensure header stays on top */
         }
 
         .header h1 {
-            font-size: 1.5rem; 
+            font-size: 1.5rem;
             margin: 0;
             padding-left: 1rem;
         }
 
         .main-content {
-            margin-top: 6rem;
+            margin-top: 6rem;  /* Adjusted for fixed header */
             padding: 2rem;
-            min-height: calc(100vh - 6rem);
+            min-height: calc(100vh - 6rem - 4rem); /* Consider footer height */
         }
 
         .projects-container {
@@ -59,52 +140,59 @@
         }
 
         .project-card {
-            background: #808080;
+            background: var(--surface0);
             border-radius: 8px;
             padding: 1.5rem;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             transition: transform 0.2s;
+            display: flex; /* Use flexbox for layout */
+            flex-direction: column; /* Stack items vertically */
         }
 
         .project-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2); 
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
 
         .project-title {
-            color: #cbcbcb;
+            color: var(--blue);
             font-size: 1.2rem;
             margin-bottom: 0.5rem;
+             margin-top: 0;
         }
 
         .project-description {
-            color: var(--text-secondary);
+            color: var(--subtext0);
             margin-bottom: 1rem;
+            flex-grow: 1; /* Allow description to take available space */
+
         }
 
         .project-link {
-            color: var(--secondary);
+            color: var(--green);
             text-decoration: none;
             display: inline-flex;
             align-items: center;
             margin-bottom: 1rem;
             transition: color 0.2s, text-decoration 0.2s;
+             margin-top: auto;
         }
 
         .project-link:hover {
             text-decoration: underline;
-            color: #8bef5d;
+            color: var(--teal);
         }
 
         .project-tech {
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
+              margin-top: auto;
         }
 
         .tech-tag {
-            background-color: var(--secondary);
-            color: white;
+            background-color: var(--blue);
+            color: var(--crust);
             padding: 0.25rem 0.5rem;
             border-radius: 1rem;
             font-size: 0.8rem;
@@ -112,49 +200,65 @@
         }
 
         .tech-tag:hover {
-            background-color: #33dc52; 
-            transform: scale(1.05); 
+            background-color: var(--lavender);
+            transform: scale(1.05);
         }
         .footer {
-            background-color: var(--primary);
-            color: white;
+            background-color: var(--mantle);
+            color: var(--text);
             text-align: center;
             padding: 1rem;
             margin-top: 2rem;
+                position: relative;
+
         }
 
         .social-links a {
-            color: white;
+            color: var(--text);
             margin: 0 0.5rem;
             font-size: 1.5rem;
             text-decoration: none;
+           transition: color 0.3s ease; /* Smooth transition for hover effect */
+
+        }
+        .social-links a:hover {
+            color: var(--blue); /* Change color on hover */
         }
 
+
         .code-snippet {
-            background-color: white;
+            background-color: var(--surface0);
             padding: 1rem;
-            border-left: 3px solid var(--secondary);
+            border-left: 3px solid var(--green);
             font-family: monospace;
             margin: 1rem 0;
+            overflow-x: auto; /* Allow horizontal scrolling */
+            color: var(--subtext1);
         }
 
         .project-icon {
             font-size: 2rem;
             margin-right: 1rem;
+            color: var(--peach);
+            align-self: flex-start; /* Align to the top */
+
         }
         .loading-indicator {
             text-align: center;
             padding: 2rem;
-            color: var(--text-secondary);
+            color: var(--subtext0);
         }
         @media (max-width: 600px) {
             .projects-container {
-                grid-template-columns: 1fr; 
+                grid-template-columns: 1fr;
             }
               .header h1 {
-                font-size: 1.5rem; 
+                font-size: 1.5rem;
             }
         }
+           .material-icons {
+            margin-left: 0.3rem; /* Space out the icon a bit */
+           }
     </style>
 </head>
 <body>
@@ -178,8 +282,8 @@
 
     <script>
        function getProjectIcon(tech) {
-            if (!tech || tech.length === 0) return 'code'; 
-            const primaryTech = tech[0].toLowerCase(); 
+            if (!tech || tech.length === 0) return 'code';
+            const primaryTech = tech[0].toLowerCase();
             switch (primaryTech) {
                 case 'bash': return 'terminal';
                 // case 'python': return 'code'; // Or a Python-specific icon
@@ -193,18 +297,23 @@
             card.className = 'project-card';
 
             const iconName = getProjectIcon(repo.tech);
+             // Ensure description exists and handle long descriptions.  Very important!
+            const description = repo.description ? (repo.description.length > 150 ? repo.description.substring(0, 147) + '...' : repo.description) : 'No description provided.';
             const markup = `
                 <div class="project-icon">
                     <i class="material-icons">${iconName}</i>
                 </div>
-                <h2 class="project-title">${repo.name}</h2>
-                <p class="project-description">${repo.description}</p>
-                <a href="${repo.url}" class="project-link">
+                <div class="project-info">
+                    <h2 class="project-title">${repo.name}</h2>
+                    <p class="project-description">${description}</p>
+                    <a href="${repo.url}" class="project-link">
                     View Project <i class="material-icons">launch</i>
                 </a>
-                <div class="project-tech">
-                    ${repo.tech.map(tag => `<span class="tech-tag">${tag}</span>`).join('')}
+                    <div class="project-tech">
+                        ${repo.tech.map(tag => `<span class="tech-tag">${tag}</span>`).join('')}
+                    </div>
                 </div>
+
             `;
 
             card.innerHTML = markup;
