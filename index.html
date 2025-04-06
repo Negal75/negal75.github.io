@@ -6,70 +6,127 @@
     <title>Negal's Projects</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!-- Favicons (keep your existing links) -->
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
     <style>
         :root {
-          /* Catppuccin Latte */
-            --rosewater: #dc8a78;
-            --flamingo: #dd7878;
-            --pink: #ea76cb;
-            --mauve: #8839ef;
-            --red: #d20f39;
-            --maroon: #e64553;
-            --peach: #fe640b;
-            --yellow: #df8e1d;
-            --green: #40a02b;
-            --teal: #179299;
-            --sky: #04a5e5;
-            --sapphire: #209fb5;
-            --blue: #1e66f5;
-            --lavender: #7287fd;
-            --text: #4c4f69;
-            --subtext1: #5c5f77;
-            --subtext0: #6c6f85;
-            --overlay2: #7c7f93;
-            --overlay1: #8c8fa1;
-            --overlay0: #9ca0b0;
-            --surface2: #acb0be;
-            --surface1: #bcc0cc;
-            --surface0: #ccd0da;
-            --base: #eff1f5;
-            --mantle: #e6e9ef;
-            --crust: #dce0e8;
-        }
-        /* Catppuccin Mocha (dark theme) */
-          .dark-theme {
-            --rosewater: #f5e0dc;
-            --flamingo: #f2cdcd;
-            --pink: #f5c2e7;
-            --mauve: #cba6f7;
-            --red: #f38ba8;
-            --maroon: #eba0ac;
-            --peach: #fab387;
-            --yellow: #f9e2af;
-            --green: #a6e3a1;
-            --teal: #94e2d5;
-            --sky: #89dceb;
-            --sapphire: #74c7ec;
-            --blue: #89b4fa;
-            --lavender: #b4befe;
-            --text: #cdd6f4;
-            --subtext1: #bac2de;
-            --subtext0: #a6adc8;
-            --overlay2: #9399b2;
-            --overlay1: #7f849c;
-            --overlay0: #6c7086;
-            --surface2: #585b70;
-            --surface1: #45475a;
-            --surface0: #313244;
-            --base: #1e1e2e;
-            --mantle: #181825;
-            --crust: #11111b;
+            /* Catppuccin Latte (Light Theme) */
+            --rosewater-light: #dc8a78;
+            --flamingo-light: #dd7878;
+            --pink-light: #ea76cb;
+            --mauve-light: #8839ef;
+            --red-light: #d20f39;
+            --maroon-light: #e64553;
+            --peach-light: #fe640b;
+            --yellow-light: #df8e1d;
+            --green-light: #40a02b;
+            --teal-light: #179299;
+            --sky-light: #04a5e5;
+            --sapphire-light: #209fb5;
+            --blue-light: #1e66f5;
+            --lavender-light: #7287fd;
+            --text-light: #4c4f69;
+            --subtext1-light: #5c5f77;
+            --subtext0-light: #6c6f85;
+            --overlay2-light: #7c7f93;
+            --overlay1-light: #8c8fa1;
+            --overlay0-light: #9ca0b0;
+            --surface2-light: #acb0be;
+            --surface1-light: #bcc0cc;
+            --surface0-light: #ccd0da;
+            --base-light: #eff1f5;
+            --mantle-light: #e6e9ef;
+            --crust-light: #dce0e8;
+
+            /* Catppuccin Mocha (Dark Theme) */
+            --rosewater-dark: #f5e0dc;
+            --flamingo-dark: #f2cdcd;
+            --pink-dark: #f5c2e7;
+            --mauve-dark: #cba6f7;
+            --red-dark: #f38ba8;
+            --maroon-dark: #eba0ac;
+            --peach-dark: #fab387;
+            --yellow-dark: #f9e2af;
+            --green-dark: #a6e3a1;
+            --teal-dark: #94e2d5;
+            --sky-dark: #89dceb;
+            --sapphire-dark: #74c7ec;
+            --blue-dark: #89b4fa;
+            --lavender-dark: #b4befe;
+            --text-dark: #cdd6f4;
+            --subtext1-dark: #bac2de;
+            --subtext0-dark: #a6adc8;
+            --overlay2-dark: #9399b2;
+            --overlay1-dark: #7f849c;
+            --overlay0-dark: #6c7086;
+            --surface2-dark: #585b70;
+            --surface1-dark: #45475a;
+            --surface0-dark: #313244;
+            --base-dark: #1e1e2e;
+            --mantle-dark: #181825;
+            --crust-dark: #11111b;
+
+             /* Default to Dark Theme */
+            --rosewater: var(--rosewater-dark);
+            --flamingo: var(--flamingo-dark);
+            --pink: var(--pink-dark);
+            --mauve: var(--mauve-dark);
+            --red: var(--red-dark);
+            --maroon: var(--maroon-dark);
+            --peach: var(--peach-dark);
+            --yellow: var(--yellow-dark);
+            --green: var(--green-dark);
+            --teal: var(--teal-dark);
+            --sky: var(--sky-dark);
+            --sapphire: var(--sapphire-dark);
+            --blue: var(--blue-dark);
+            --lavender: var(--lavender-dark);
+            --text: var(--text-dark);
+            --subtext1: var(--subtext1-dark);
+            --subtext0: var(--subtext0-dark);
+            --overlay2: var(--overlay2-dark);
+            --overlay1: var(--overlay1-dark);
+            --overlay0: var(--overlay0-dark);
+            --surface2: var(--surface2-dark);
+            --surface1: var(--surface1-dark);
+            --surface0: var(--surface0-dark);
+            --base: var(--base-dark);
+            --mantle: var(--mantle-dark);
+            --crust: var(--crust-dark);
         }
 
+        html.light-theme {
+            /* Apply Light Theme Variables when .light-theme class is present */
+            --rosewater: var(--rosewater-light);
+            --flamingo: var(--flamingo-light);
+            --pink: var(--pink-light);
+            --mauve: var(--mauve-light);
+            --red: var(--red-light);
+            --maroon: var(--maroon-light);
+            --peach: var(--peach-light);
+            --yellow: var(--yellow-light);
+            --green: var(--green-light);
+            --teal: var(--teal-light);
+            --sky: var(--sky-light);
+            --sapphire: var(--sapphire-light);
+            --blue: var(--blue-light);
+            --lavender: var(--lavender-light);
+            --text: var(--text-light);
+            --subtext1: var(--subtext1-light);
+            --subtext0: var(--subtext0-light);
+            --overlay2: var(--overlay2-light);
+            --overlay1: var(--overlay1-light);
+            --overlay0: var(--overlay0-light);
+            --surface2: var(--surface2-light);
+            --surface1: var(--surface1-light);
+            --surface0: var(--surface0-light);
+            --base: var(--base-light);
+            --mantle: var(--mantle-light);
+            --crust: var(--crust-light);
+        }
 
         * {
             margin: 0;
@@ -82,57 +139,53 @@
             background-color: var(--base);
             color: var(--text);
             line-height: 1.6;
-              /* Initially apply dark theme */
-            --rosewater: #f5e0dc;
-            --flamingo: #f2cdcd;
-            --pink: #f5c2e7;
-            --mauve: #cba6f7;
-            --red: #f38ba8;
-            --maroon: #eba0ac;
-            --peach: #fab387;
-            --yellow: #f9e2af;
-            --green: #a6e3a1;
-            --teal: #94e2d5;
-            --sky: #89dceb;
-            --sapphire: #74c7ec;
-            --blue: #89b4fa;
-            --lavender: #b4befe;
-            --text: #cdd6f4;
-            --subtext1: #bac2de;
-            --subtext0: #a6adc8;
-            --overlay2: #9399b2;
-            --overlay1: #7f849c;
-            --overlay0: #6c7086;
-            --surface2: #585b70;
-            --surface1: #45475a;
-            --surface0: #313244;
-            --base: #1e1e2e;
-            --mantle: #181825;
-            --crust: #11111b;
+            transition: background-color 0.3s ease, color 0.3s ease; /* Smooth theme transition */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
-
 
         .header {
             background-color: var(--mantle);
             color: var(--text);
-            padding: 1rem;
+            padding: 1rem 1.5rem; /* Adjusted padding */
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             position: fixed;
             width: 100%;
             top: 0;
-            z-index: 100; /* Ensure header stays on top */
+            z-index: 100;
+            display: flex; /* Use flexbox for alignment */
+            justify-content: space-between; /* Space out title and button */
+            align-items: center; /* Vertically center items */
         }
 
         .header h1 {
             font-size: 1.5rem;
             margin: 0;
-            padding-left: 1rem;
+        }
+
+        #theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text);
+            cursor: pointer;
+            font-size: 1.8rem; /* Material icon size */
+            padding: 0.25rem;
+            display: flex; /* Align icon */
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: color 0.3s ease, background-color 0.3s ease;
+        }
+        #theme-toggle:hover {
+            color: var(--blue);
+            background-color: var(--surface0); /* Subtle hover background */
         }
 
         .main-content {
-            margin-top: 6rem;  /* Adjusted for fixed header */
+            margin-top: 6rem; /* Adjusted for fixed header height + padding */
             padding: 2rem;
-            min-height: calc(100vh - 6rem - 4rem); /* Consider footer height */
+            flex-grow: 1; /* Make main content take up available vertical space */
         }
 
         .projects-container {
@@ -146,30 +199,80 @@
         .project-card {
             background: var(--surface0);
             border-radius: 8px;
-            padding: 1.5rem;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: transform 0.2s;
-            display: flex; /* Use flexbox for layout */
-            flex-direction: column; /* Stack items vertically */
+            transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden; /* Contain elements like the image */
         }
 
         .project-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+
+        .project-image-container {
+            width: 100%;
+            height: 180px; /* Fixed height for consistency */
+            background-color: var(--surface1); /* Placeholder background */
+            display: flex; /* Center potentially small images */
+            align-items: center;
+            justify-content: center;
+            overflow: hidden; /* Hide overflow */
+        }
+
+        .project-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Cover the area, cropping if needed */
+            display: block; /* Remove extra space below image */
+            transition: opacity 0.3s ease; /* Fade in */
+            opacity: 0; /* Start hidden */
+        }
+        .project-image-container img.loaded {
+             opacity: 1; /* Show when loaded */
+        }
+
+
+        .project-content {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1; /* Allow content to fill card */
+        }
+
+        .project-header {
+            display: flex;
+            align-items: flex-start; /* Align icon top */
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+
+        .project-icon {
+            font-size: 1.8rem; /* Slightly smaller icon */
+            color: var(--peach);
+            margin-top: 0.1rem; /* Fine-tune alignment */
         }
 
         .project-title {
             color: var(--blue);
             font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-             margin-top: 0;
+             margin: 0;
+            font-weight: 600;
         }
 
         .project-description {
             color: var(--subtext0);
-            margin-bottom: 1rem;
-            flex-grow: 1; /* Allow description to take available space */
-
+            margin-bottom: 1.5rem; /* More space before link/tags */
+            flex-grow: 1; /* Take available space */
+            /* CSS multi-line truncation */
+            display: -webkit-box;
+            -webkit-line-clamp: 4; /* Show ~4 lines */
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            min-height: 60px; /* Ensure space even if desc is short */
         }
 
         .project-link {
@@ -179,7 +282,8 @@
             align-items: center;
             margin-bottom: 1rem;
             transition: color 0.2s, text-decoration 0.2s;
-             margin-top: auto;
+            margin-top: auto; /* Push link and tags to bottom */
+            font-weight: 500;
         }
 
         .project-link:hover {
@@ -187,137 +291,256 @@
             color: var(--teal);
         }
 
+        .project-link .material-icons {
+            font-size: 1.1rem; /* Adjust icon size */
+            margin-left: 0.3rem;
+        }
+
         .project-tech {
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
-              margin-top: auto;
+            margin-top: 0.5rem; /* Space above tags */
         }
 
         .tech-tag {
             background-color: var(--blue);
             color: var(--crust);
-            padding: 0.25rem 0.5rem;
+            padding: 0.25rem 0.6rem;
             border-radius: 1rem;
             font-size: 0.8rem;
             transition: background-color 0.2s, transform 0.2s;
+            font-weight: 500;
         }
 
         .tech-tag:hover {
             background-color: var(--lavender);
             transform: scale(1.05);
         }
+
         .footer {
             background-color: var(--mantle);
             color: var(--text);
             text-align: center;
-            padding: 1rem;
-            margin-top: 2rem;
-                position: relative;
-
+            padding: 1.5rem 1rem; /* Increased padding */
+            margin-top: 2rem; /* Ensure space from content */
+            position: relative; /* Ensure it's not overlapping fixed header */
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.1); /* Add top shadow */
+        }
+        .footer p {
+            margin-bottom: 0.5rem;
+            color: var(--subtext0);
         }
 
         .social-links a {
             color: var(--text);
-            margin: 0 0.5rem;
+            margin: 0 0.7rem; /* Increased spacing */
             font-size: 1.5rem;
             text-decoration: none;
-           transition: color 0.3s ease; /* Smooth transition for hover effect */
-
+            transition: color 0.3s ease, transform 0.2s ease;
+            display: inline-block; /* Allows transform */
         }
         .social-links a:hover {
-            color: var(--blue); /* Change color on hover */
+            color: var(--blue);
+            transform: translateY(-2px); /* Subtle lift effect */
         }
+         .social-links svg { /* Style for SVG icon */
+             width: 24px;
+             height: 24px;
+             fill: currentColor; /* Use link color */
+             vertical-align: middle; /* Align with text if needed */
+         }
 
-
-        .code-snippet {
-            background-color: var(--surface0);
-            padding: 1rem;
-            border-left: 3px solid var(--green);
-            font-family: monospace;
-            margin: 1rem 0;
-            overflow-x: auto; /* Allow horizontal scrolling */
-            color: var(--subtext1);
-        }
-
-        .project-icon {
-            font-size: 2rem;
-            margin-right: 1rem;
-            color: var(--peach);
-            align-self: flex-start; /* Align to the top */
-
-        }
-        .loading-indicator {
+        .status-message { /* For Loading and Error */
             text-align: center;
-            padding: 2rem;
+            padding: 3rem 1rem;
             color: var(--subtext0);
+            font-size: 1.1rem;
+            grid-column: 1 / -1; /* Span full width if grid has started */
         }
+         .status-message .material-icons { /* Style icon within message */
+             font-size: 2rem;
+             display: block;
+             margin: 0 auto 0.5rem;
+             color: var(--overlay1);
+         }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.3rem;
+            }
+             #theme-toggle {
+                 font-size: 1.6rem;
+             }
+        }
+
         @media (max-width: 600px) {
             .projects-container {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr; /* Single column on small screens */
             }
-              .header h1 {
-                font-size: 1.5rem;
+            .header h1 {
+                font-size: 1.2rem;
             }
+            .main-content {
+                padding: 1.5rem;
+                margin-top: 5.5rem; /* Adjust for slightly smaller header */
+            }
+             .project-card {
+                 /* Adjust card details if needed */
+             }
         }
-           .material-icons {
-            margin-left: 0.3rem; /* Space out the icon a bit */
-           }
+
+        .material-icons {
+             vertical-align: middle; /* Better alignment */
+        }
     </style>
 </head>
 <body>
     <header class="header">
         <h1>Negal's Projects</h1>
+        <button id="theme-toggle" aria-label="Toggle theme">
+            <i class="material-icons">brightness_4</i> <!-- Initial icon, will be updated by JS -->
+        </button>
     </header>
 
     <main class="main-content">
         <div class="projects-container">
-            <div class="loading-indicator">Loading...</div>
+            <div class="status-message loading">
+                 <i class="material-icons">hourglass_empty</i>
+                 Loading Projects...
+            </div>
+            <!-- Project cards will be injected here -->
         </div>
     </main>
 
     <footer class="footer">
-        <p>© 2025 Negal. All rights reserved.</p>
+        <p>© <span id="year">2024</span> Negal75. All rights reserved.</p>
         <div class="social-links">
-            <a href="https://github.com/Negal75" aria-label="GitHub"><i class="material-icons"></i></a>
-            <!-- Add links and icons for other social media -->
+            <a href="https://github.com/Negal75" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
+                 <!-- SVG GitHub Icon -->
+                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor">
+                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                 </svg>
+            </a>
+            <!-- Add links and icons for other social media here -->
+            <!-- Example:
+            <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile"><i class="material-icons">linkedin</i></a>
+            -->
         </div>
     </footer>
 
     <script>
-       function getProjectIcon(tech) {
-            if (!tech || tech.length === 0) return 'code';
-            const primaryTech = tech[0].toLowerCase();
-            switch (primaryTech) {
-                case 'bash': return 'terminal';
-                // case 'python': return 'code'; // Or a Python-specific icon
-                // Add more mappings as needed
-                default: return 'code';
+        const themeToggleButton = document.getElementById('theme-toggle');
+        const projectsContainer = document.querySelector('.projects-container');
+        const currentYearSpan = document.getElementById('year');
+        const GITHUB_USERNAME = 'Negal75'; // Your GitHub username
+
+        // --- Theme Handling ---
+        const userPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const savedTheme = localStorage.getItem('theme');
+
+        function applyTheme(theme) {
+            const toggleIcon = themeToggleButton.querySelector('i');
+            if (theme === 'light') {
+                document.documentElement.classList.add('light-theme');
+                toggleIcon.textContent = 'brightness_7'; // Sun icon
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.classList.remove('light-theme');
+                toggleIcon.textContent = 'brightness_4'; // Moon icon
+                localStorage.setItem('theme', 'dark');
             }
         }
+
+        themeToggleButton.addEventListener('click', () => {
+            const isLight = document.documentElement.classList.contains('light-theme');
+            applyTheme(isLight ? 'dark' : 'light');
+        });
+
+        // Set initial theme based on saved preference or system setting (defaulting to dark)
+        if (savedTheme) {
+            applyTheme(savedTheme);
+        } else {
+             applyTheme('dark'); // Default to dark if no preference/system setting
+            // Uncomment below if you want to default to system preference first
+            // applyTheme(userPrefersDark ? 'dark' : 'light');
+        }
+
+        // --- Project Loading ---
+        function getProjectIcon(tech) {
+            if (!tech || tech.length === 0) return 'code'; // Default icon
+            const primaryTech = tech[0].toLowerCase();
+            // Add more specific icons based on language/tech
+            const iconMap = {
+                'bash': 'terminal',
+                'shell': 'terminal',
+                'python': 'code', // Consider finding a specific python icon if using a different library
+                'html': 'html',
+                'css': 'css',
+                'javascript': 'javascript',
+                'typescript': 'javascript', // Often use the JS icon
+                'java': 'coffee',
+                'c#': 'code',
+                'c++': 'code',
+                'go': 'code', // Consider finding specific icons
+                'rust': 'code',
+                'dockerfile': 'deployed_code', // Example
+                'vue': 'web',
+                'react': 'web',
+                'angular': 'web'
+                 // Add more mappings...
+            };
+            return iconMap[primaryTech] || 'code'; // Return mapped icon or default
+        }
+
+         function handleImageError(imgElement, fallbackSrc) {
+            // Attempt to load fallback source if primary failed
+            if (fallbackSrc && imgElement.src !== fallbackSrc) {
+                 console.log(`Primary image failed, trying fallback: ${fallbackSrc}`);
+                imgElement.src = fallbackSrc;
+                // Remove the fallback attribute to prevent infinite loops if fallback also fails
+                 imgElement.setAttribute('data-fallback-src', '');
+             } else {
+                 // If fallback also fails or no fallback provided, hide the container
+                 console.log(`Image loading failed for: ${imgElement.src}. Hiding container.`);
+                 imgElement.closest('.project-image-container').style.display = 'none';
+             }
+         }
 
         function createProjectCard(repo) {
             const card = document.createElement('div');
             card.className = 'project-card';
 
             const iconName = getProjectIcon(repo.tech);
-             // Ensure description exists and handle long descriptions.  Very important!
-            const description = repo.description ? (repo.description.length > 150 ? repo.description.substring(0, 147) + '...' : repo.description) : 'No description provided.';
+            const description = repo.description ? repo.description : 'No description provided.';
+
+            // Construct potential image URLs
+            const primaryImage = `https://raw.githubusercontent.com/${repo.owner}/${repo.name}/${repo.defaultBranch}/preview.png`;
+             const fallbackImage = `https://raw.githubusercontent.com/${repo.owner}/${repo.name}/${repo.defaultBranch}/screenshot.png`;
+
+
             const markup = `
-                <div class="project-icon">
-                    <i class="material-icons">${iconName}</i>
+                <div class="project-image-container">
+                    <img src="${primaryImage}"
+                         alt="${repo.name} preview"
+                         class="project-image"
+                         onload="this.classList.add('loaded')"
+                         onerror="handleImageError(this, '${fallbackImage}')"
+                         loading="lazy"> {/* Lazy load images */}
                 </div>
-                <div class="project-info">
-                    <h2 class="project-title">${repo.name}</h2>
+                <div class="project-content">
+                     <div class="project-header">
+                        <i class="material-icons project-icon">${iconName}</i>
+                        <h2 class="project-title">${repo.name}</h2>
+                    </div>
                     <p class="project-description">${description}</p>
-                    <a href="${repo.url}" class="project-link">
-                    View Project <i class="material-icons">launch</i>
-                </a>
+                    <a href="${repo.url}" class="project-link" target="_blank" rel="noopener noreferrer">
+                        View Project <i class="material-icons">launch</i>
+                    </a>
                     <div class="project-tech">
                         ${repo.tech.map(tag => `<span class="tech-tag">${tag}</span>`).join('')}
                     </div>
                 </div>
-
             `;
 
             card.innerHTML = markup;
@@ -326,36 +549,53 @@
 
        async function fetchRepositories() {
             try {
-                const response = await fetch('https://api.github.com/users/Negal75/repos'); // Replace with your username
+                const response = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=100`); // Sort by updated, get more repos
                 if (!response.ok) {
-                    throw new Error(`GitHub API request failed: ${response.status}`);
+                    throw new Error(`GitHub API request failed: ${response.status} ${response.statusText}`);
                 }
                 const data = await response.json();
 
-                // Process the data to match the structure you need
+                // Filter out forks if desired (optional)
+                // const nonForkRepos = data.filter(repo => !repo.fork);
+
+                // Process the data
                 const repositories = data.map(repo => ({
                     name: repo.name,
-                    description: repo.description || 'No description provided.', // Handle missing descriptions
+                    description: repo.description, // Keep null if missing, handle in createProjectCard
                     url: repo.html_url,
-                    tech: repo.language ? [repo.language] : [], // Get the primary language
+                    tech: repo.language ? [repo.language] : [], // Primary language
+                    // Add topics if you want to display them as tags
+                    // tech: [repo.language, ...(repo.topics || [])].filter(Boolean), // Combine language and topics
+                    owner: GITHUB_USERNAME, // We know the owner
+                    defaultBranch: repo.default_branch // Needed for image URL
                 }));
 
                 // Populate projects container
-                const projectsContainer = document.querySelector('.projects-container');
-                projectsContainer.innerHTML = ''; //clear loading
-                repositories.forEach(repo => {
-                    projectsContainer.appendChild(createProjectCard(repo));
-                });
+                projectsContainer.innerHTML = ''; // Clear loading/previous content
+                if (repositories.length === 0) {
+                     projectsContainer.innerHTML = `<div class="status-message"><i class="material-icons">info</i>No public repositories found.</div>`;
+                } else {
+                    repositories.forEach(repo => {
+                        projectsContainer.appendChild(createProjectCard(repo));
+                    });
+                }
 
             } catch (error) {
                 console.error('Error fetching repositories:', error);
-                const projectsContainer = document.querySelector('.projects-container');
-                projectsContainer.innerHTML = `<p>Error loading projects: ${error.message}</p>`;
+                 // Display a user-friendly error message
+                projectsContainer.innerHTML = `
+                     <div class="status-message error">
+                         <i class="material-icons">error_outline</i>
+                         <p>Error loading projects.</p>
+                         <p><small>${error.message}</small></p>
+                     </div>`;
             }
         }
 
-        fetchRepositories();
-        document.querySelector('.footer p').innerHTML = `© ${new Date().getFullYear()} Negal75. All rights reserved.`;
+        // --- Initialisation ---
+        currentYearSpan.textContent = new Date().getFullYear(); // Update footer year
+        fetchRepositories(); // Fetch projects on load
+
     </script>
 </body>
 </html>
