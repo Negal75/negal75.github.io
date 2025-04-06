@@ -595,9 +595,9 @@
                         <i class="material-icons project-icon" aria-hidden="true">${iconName}</i>
                         <h2 class="project-title">${repo.name}</h2>
                     </div>
-                    <p class="project-description" title="${escapedDescription}">${description}</p> {/* Add full description to title attribute */}
+                    <p class="project-description" title="${escapedDescription}">${description}</p>
                     <a href="${repo.url}" class="project-link" target="_blank" rel="noopener noreferrer">
-                        View Project <i class="material-icons">arrow_forward</i> {/* Changed icon */}
+                        View Project <i class="material-icons">arrow_forward</i>
                     </a>
                     <div class="project-tech">
                         ${allTech.map(tag => `<span class="tech-tag">${tag}</span>`).join('')}
