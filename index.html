@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Negal's Projects</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Fonts: Inter (Default), Roboto (Android), System UI (iOS) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <!-- Favicons (keep your existing links) -->
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -26,13 +27,16 @@
              --timing-fast: 0.2s;
              --timing-medium: 0.4s;
              --timing-slow: 0.6s;
-             --easing-standard: cubic-bezier(0.4, 0, 0.2, 1); /* Material Design standard */
-             --easing-decelerate: cubic-bezier(0.0, 0, 0.2, 1); /* Material Design decelerate */
-             --easing-accelerate: cubic-bezier(0.4, 0, 1, 1); /* Material Design accelerate */
+             --easing-standard: cubic-bezier(0.4, 0, 0.2, 1);
+             --easing-decelerate: cubic-bezier(0.0, 0, 0.2, 1);
+             --easing-accelerate: cubic-bezier(0.4, 0, 1, 1);
+
+             /* Default Font */
+             --font-family-default: 'Inter', sans-serif;
+             --font-family: var(--font-family-default); /* Dynamic font */
         }
 
         html.light-theme {
-            /* Apply Light Theme Variables when .light-theme class is present */
             --rosewater: var(--rosewater-light); --flamingo: var(--flamingo-light); --pink: var(--pink-light); --mauve: var(--mauve-light); --red: var(--red-light); --maroon: var(--maroon-light); --peach: var(--peach-light); --yellow: var(--yellow-light); --green: var(--green-light); --teal: var(--teal-light); --sky: var(--sky-light); --sapphire: var(--sapphire-light); --blue: var(--blue-light); --lavender: var(--lavender-light); --text: var(--text-light); --subtext1: var(--subtext1-light); --subtext0: var(--subtext0-light); --overlay2: var(--overlay2-light); --overlay1: var(--overlay1-light); --overlay0: var(--overlay0-light); --surface2: var(--surface2-light); --surface1: var(--surface1-light); --surface0: var(--surface0-light); --base: var(--base-light); --mantle: var(--mantle-light); --crust: var(--crust-light);
         }
 
@@ -40,15 +44,18 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
+            font-family: var(--font-family); /* Use dynamic font */
         }
 
-        /* Subtle Wavy Background Animation */
         @keyframes wave {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
+
 
         body {
             background-color: var(--base);
@@ -58,35 +65,27 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            /* Wavy background implementation */
             background: linear-gradient(315deg, var(--base) 0%, var(--mantle) 25%, var(--crust) 50%, var(--mantle) 75%, var(--base) 100%);
-            background-size: 400% 400%; /* Make gradient large */
-            animation: wave 30s ease infinite; /* Slow, smooth wave */
+            background-size: 400% 400%;
+            animation: wave 30s ease infinite;
         }
 
-        /* Respect user preference for reduced motion */
         @media (prefers-reduced-motion: reduce) {
-            body {
-                animation: none; /* Disable wave */
-                background: var(--base); /* Static background */
+            body, .project-card, .project-card:hover, .tech-tag:hover, .social-links a:hover, #theme-toggle, .footer, .header, .mode-switcher button {
+                animation: none !important;
+                transition: none !important;
+                transform: none !important;
             }
-            .project-card, .project-card:hover, .tech-tag:hover, .social-links a:hover, #theme-toggle {
-                transition: none; /* Disable transitions */
-                animation: none; /* Disable entry animations */
-                transform: none; /* Disable transforms */
-            }
-            .project-card.animate-in {
-                opacity: 1;
-                transform: translateY(0);
-            }
+             .project-card.animate-in { opacity: 1; transform: translateY(0); }
+             .header, .footer { opacity: 1; transform: translateY(0); }
         }
 
         .header {
-            background-color: rgba(var(--mantle-rgb, 24 24 37) / 0.8); /* Use RGB for transparency */
-            backdrop-filter: blur(10px); /* Frosted glass effect */
+            background-color: rgba(var(--mantle-rgb, 24 24 37) / 0.8);
+            backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             color: var(--text);
-            padding: 1rem 1.5rem;
+            padding: 0.8rem 1.5rem; /* Slightly less padding top/bottom */
             box-shadow: 0 2px 10px rgba(0,0,0,0.15);
             position: fixed;
             width: 100%;
@@ -95,37 +94,79 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            transition: background-color 0.5s var(--easing-standard); /* Smooth theme change */
+            transition: background-color 0.5s var(--easing-standard), backdrop-filter 0.5s var(--easing-standard);
+            animation: fadeIn var(--timing-medium) var(--easing-decelerate);
         }
 
-        /* Add RGB versions of mantle for backdrop filter compatibility */
-        :root { --mantle-rgb: 24 24 37; } /* Dark theme default */
-        html.light-theme { --mantle-rgb: 230 233 239; } /* Light theme */
+        :root { --mantle-rgb: 24 24 37; --surface0-rgb: 49 50 68; } /* Dark theme default RGBs */
+        html.light-theme { --mantle-rgb: 230 233 239; --surface0-rgb: 204 208 218; } /* Light theme RGBs */
 
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
 
         .header h1 {
-            font-size: 1.6rem; /* Slightly larger */
+            font-size: 1.5rem; /* Adjusted size */
             margin: 0;
             font-weight: 700;
-            color: var(--mauve); /* Use a theme accent color */
+            color: var(--mauve);
         }
+
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem; /* Reduced gap */
+        }
+
+        .mode-switcher {
+             display: flex;
+             gap: 0.3rem;
+             background-color: var(--surface0);
+             padding: 0.2rem;
+             border-radius: 1rem;
+             box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+        }
+         .mode-switcher button {
+             background: none;
+             border: none;
+             color: var(--overlay1);
+             padding: 0.3rem 0.7rem;
+             font-size: 0.8rem;
+             font-weight: 500;
+             cursor: pointer;
+             border-radius: 0.8rem;
+             transition: background-color var(--timing-fast) var(--easing-standard), color var(--timing-fast) var(--easing-standard), transform var(--timing-fast) ease-out;
+         }
+         .mode-switcher button.active {
+             background-color: var(--base);
+             color: var(--blue);
+             box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+             transform: scale(1.05);
+         }
+         .mode-switcher button:not(.active):hover {
+             color: var(--text);
+             background-color: var(--surface1);
+         }
+
 
         #theme-toggle {
             background: none;
             border: none;
             color: var(--text);
             cursor: pointer;
-            font-size: 1.8rem;
-            padding: 0.5rem; /* Slightly larger click area */
+            font-size: 1.7rem; /* Adjusted */
+            padding: 0.4rem;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
             transition: color var(--timing-fast) var(--easing-standard),
                         background-color var(--timing-fast) var(--easing-standard),
-                        transform var(--timing-fast) ease-out; /* Add transform transition */
-            position: relative; /* For potential icon animations */
-            overflow: hidden; /* Contain icon switch */
+                        transform var(--timing-fast) ease-out;
+            position: relative;
+            overflow: hidden;
         }
         #theme-toggle i {
             transition: transform var(--timing-medium) var(--easing-standard), opacity var(--timing-medium) var(--easing-standard);
@@ -133,21 +174,17 @@
         #theme-toggle:hover {
             color: var(--blue);
             background-color: var(--surface0);
-            transform: scale(1.1) rotate(15deg); /* Add subtle rotate/scale on hover */
+            transform: scale(1.1) rotate(15deg);
         }
-        #theme-toggle:active {
-            transform: scale(0.95); /* Click feedback */
-        }
-
-        /* Class for icon transition - JS will toggle this */
+        #theme-toggle:active { transform: scale(0.95); }
         .theme-toggle-transition .material-icons {
             transform: rotate(180deg) scale(0.5);
             opacity: 0;
         }
 
         .main-content {
-            margin-top: 7rem; /* Adjusted for potentially taller header/padding */
-            padding: 2.5rem; /* More spacing */
+            margin-top: 6rem; /* Adjusted for header */
+            padding: 2.5rem;
             flex-grow: 1;
         }
 
@@ -155,314 +192,249 @@
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); /* Slightly larger minimum */
-            gap: 2.5rem; /* More gap */
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2.5rem;
         }
 
         .project-card {
             background: var(--surface0);
-            border-radius: 12px; /* Softer corners */
-            border: 1px solid var(--surface1); /* Subtle border */
+            border-radius: 12px;
+            border: 1px solid var(--surface1);
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             transition: transform var(--timing-medium) var(--easing-standard),
                         box-shadow var(--timing-medium) var(--easing-standard),
-                        border-color var(--timing-medium) var(--easing-standard);
+                        border-color var(--timing-medium) var(--easing-standard),
+                        background-color var(--timing-medium) var(--easing-standard); /* Added background */
             display: flex;
             flex-direction: column;
             overflow: hidden;
-            /* Animation preparation */
             opacity: 0;
             transform: translateY(20px);
+            will-change: transform, opacity, box-shadow; /* Performance hint */
         }
 
-        /* Animation definition for card entry */
         @keyframes cardEnter {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            to { opacity: 1; transform: translateY(0); }
         }
-        /* Class added by JS to trigger animation */
         .project-card.animate-in {
             animation: cardEnter var(--timing-slow) var(--easing-decelerate) forwards;
         }
 
         .project-card:hover {
-            transform: translateY(-8px) scale(1.02); /* Lift and slightly enlarge */
+            transform: translateY(-8px) scale(1.02);
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            border-color: var(--blue); /* Highlight border on hover */
+            border-color: var(--blue);
         }
 
         .project-image-container {
             width: 100%;
-            height: 200px; /* Increased height */
-            /* Placeholder gradient */
+            height: 200px;
             background: linear-gradient(135deg, var(--surface1), var(--surface2));
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            position: relative; /* For potential overlay effects */
+            position: relative;
         }
-
         .project-image-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
+            width: 100%; height: 100%; object-fit: cover; display: block;
             transition: opacity var(--timing-medium) ease-in-out, transform var(--timing-medium) var(--easing-standard);
-            opacity: 0; /* Start hidden */
-            transform: scale(1.05); /* Start slightly zoomed in */
+            opacity: 0; transform: scale(1.05);
         }
-        .project-image-container img.loaded {
-             opacity: 1; /* Show when loaded */
-             transform: scale(1); /* Zoom out to normal */
-        }
-        .project-card:hover .project-image-container img {
-             transform: scale(1.05); /* Zoom in slightly on card hover */
-        }
+        .project-image-container img.loaded { opacity: 1; transform: scale(1); }
+        .project-card:hover .project-image-container img { transform: scale(1.05); }
 
-
-        .project-content {
-            padding: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-
-        .project-header {
-            display: flex;
-            align-items: center; /* Center icon vertically */
-            gap: 0.8rem;
-            margin-bottom: 1rem;
-        }
-
-        .project-icon {
-            font-size: 2rem; /* Larger icon */
-            color: var(--peach);
-            /* margin-top: 0.1rem; */ /* Removed, align-items: center handles this */
-            transition: color var(--timing-fast) var(--easing-standard);
-        }
-        .project-card:hover .project-icon {
-            color: var(--flamingo); /* Change icon color on hover */
-        }
-
-        .project-title {
-            color: var(--blue);
-            font-size: 1.3rem; /* Slightly larger title */
-             margin: 0;
-            font-weight: 600;
-            transition: color var(--timing-fast) var(--easing-standard);
-        }
-        .project-card:hover .project-title {
-            color: var(--lavender);
-        }
-
+        .project-content { padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1; }
+        .project-header { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1rem; }
+        .project-icon { font-size: 2rem; color: var(--peach); transition: color var(--timing-fast) var(--easing-standard); }
+        .project-card:hover .project-icon { color: var(--flamingo); }
+        .project-title { color: var(--blue); font-size: 1.3rem; margin: 0; font-weight: 600; transition: color var(--timing-fast) var(--easing-standard); }
+        .project-card:hover .project-title { color: var(--lavender); }
         .project-description {
-            color: var(--subtext0);
-            margin-bottom: 1.5rem;
-            flex-grow: 1;
-            display: -webkit-box;
-            -webkit-line-clamp: 4;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            min-height: 64px; /* Adjust based on line-height and clamp */
+            color: var(--subtext0); margin-bottom: 1.5rem; flex-grow: 1;
+            display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical;
+            overflow: hidden; text-overflow: ellipsis; min-height: 64px;
             transition: color var(--timing-fast) var(--easing-standard);
         }
-        .project-card:hover .project-description {
-            color: var(--subtext1); /* Slightly lighten description on hover */
-        }
-
+        .project-card:hover .project-description { color: var(--subtext1); }
         .project-link {
-            color: var(--green);
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            margin-bottom: 1.5rem; /* More space */
-            transition: color var(--timing-fast) var(--easing-standard), transform var(--timing-fast) ease-out;
-            margin-top: auto;
-            font-weight: 500;
-            align-self: flex-start; /* Align link to the left */
+            color: var(--green); text-decoration: none; display: inline-flex; align-items: center;
+            margin-bottom: 1.5rem; transition: color var(--timing-fast) var(--easing-standard), transform var(--timing-fast) ease-out;
+            margin-top: auto; font-weight: 500; align-self: flex-start;
         }
+        .project-link:hover { color: var(--teal); transform: translateX(4px); }
+        .project-link .material-icons { font-size: 1.2rem; margin-left: 0.4rem; transition: transform var(--timing-fast) ease-out; }
+        .project-link:hover .material-icons { transform: translateX(2px); }
 
-        .project-link:hover {
-            text-decoration: none; /* Remove underline, rely on color/transform */
-            color: var(--teal);
-            transform: translateX(4px); /* Shift right slightly on hover */
-        }
-        .project-link:hover .material-icons {
-             transform: translateX(2px); /* Move icon slightly more */
-        }
-
-        .project-link .material-icons {
-            font-size: 1.2rem;
-            margin-left: 0.4rem;
-            transition: transform var(--timing-fast) ease-out;
-        }
-
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.6rem; /* Slightly more gap */
-            margin-top: 0.5rem;
-        }
-
+        .project-tech { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 0.5rem; }
         .tech-tag {
-             /* Gradient background for tags */
             background: linear-gradient(45deg, var(--blue), var(--mauve));
-            color: var(--crust); /* Use lightest background for contrast */
-            padding: 0.3rem 0.8rem;
-            border-radius: 1rem; /* Fully rounded */
-            font-size: 0.8rem;
-            font-weight: 500;
+            color: var(--crust); padding: 0.3rem 0.8rem; border-radius: 1rem;
+            font-size: 0.8rem; font-weight: 500;
             transition: transform var(--timing-fast) var(--easing-standard),
-                        box-shadow var(--timing-fast) var(--easing-standard);
+                        box-shadow var(--timing-fast) var(--easing-standard),
+                        background var(--timing-fast) var(--easing-standard); /* Added background transition */
             box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
-
         .tech-tag:hover {
-            transform: translateY(-2px) scale(1.05); /* Lift and scale */
+            transform: translateY(-2px) scale(1.05);
             box-shadow: 0 3px 6px rgba(0,0,0,0.15);
-            /* Optional: Slightly change gradient on hover */
-            /* background: linear-gradient(45deg, var(--lavender), var(--pink)); */
+            background: linear-gradient(45deg, var(--lavender), var(--pink)); /* Change gradient on hover */
         }
 
         .footer {
             background-color: var(--mantle);
-            color: var(--text);
-            text-align: center;
-            padding: 2rem 1rem; /* Increased padding */
-            margin-top: 3rem; /* Ensure space from content */
-            position: relative;
-            box-shadow: 0 -4px 15px rgba(0,0,0,0.1); /* Soft top shadow */
-            border-top: 1px solid var(--surface0); /* Subtle top border */
-            transition: background-color 0.5s var(--easing-standard); /* Smooth theme change */
+            color: var(--text); text-align: center; padding: 2rem 1rem;
+            margin-top: 3rem; position: relative;
+            box-shadow: 0 -4px 15px rgba(0,0,0,0.1);
+            border-top: 1px solid var(--surface0);
+            transition: background-color 0.5s var(--easing-standard), opacity var(--timing-medium) ease-out, transform var(--timing-medium) ease-out;
+            animation: slideUp var(--timing-slow) var(--easing-decelerate) 0.5s backwards; /* Delay footer animation slightly */
+            will-change: opacity, transform;
         }
-        .footer p {
-            margin-bottom: 0.8rem; /* More space below text */
-            color: var(--subtext0);
-            font-size: 0.9rem;
-        }
+        .footer p { margin-bottom: 0.8rem; color: var(--subtext0); font-size: 0.9rem; }
 
         .social-links a {
-            color: var(--overlay1); /* Use a slightly muted color */
-            margin: 0 0.8rem;
-            font-size: 1.6rem; /* Slightly larger icons */
+            color: var(--overlay1); margin: 0 0.8rem; font-size: 1.6rem;
             text-decoration: none;
             transition: color var(--timing-fast) var(--easing-standard), transform var(--timing-fast) var(--easing-standard);
-            display: inline-block;
+            display: inline-block; /* Needed for transform */
         }
-        .social-links a:hover {
-            color: var(--sky); /* Use a bright accent color on hover */
-            transform: translateY(-4px) scale(1.1); /* More pronounced lift and scale */
-        }
-         .social-links svg {
-             width: 26px; /* Slightly larger SVG */
-             height: 26px;
-             fill: currentColor;
-             vertical-align: middle;
-         }
+        .social-links a:hover { color: var(--sky); transform: translateY(-4px) scale(1.1); }
+        .social-links svg { width: 26px; height: 26px; fill: currentColor; vertical-align: middle; }
 
         .status-message {
-            text-align: center;
-            padding: 4rem 1rem; /* More padding */
-            color: var(--subtext0);
-            font-size: 1.2rem;
-            grid-column: 1 / -1;
-            display: flex; /* Use flex for better alignment */
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            text-align: center; padding: 4rem 1rem; color: var(--subtext0);
+            font-size: 1.2rem; grid-column: 1 / -1;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
         }
-         .status-message .material-icons {
-             font-size: 3rem; /* Larger icon */
-             margin-bottom: 1rem;
-             color: var(--overlay0);
-             animation: spin 2s linear infinite; /* Add spinning animation to loading */
-         }
-         .status-message.error .material-icons {
-             animation: none; /* No animation for error icon */
-             color: var(--red); /* Use red for error */
-         }
-         .status-message.empty .material-icons {
-             animation: none; /* No animation for info icon */
-             color: var(--yellow); /* Use yellow for info/empty */
-         }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        .status-message .material-icons {
+            font-size: 3rem; margin-bottom: 1rem; color: var(--overlay0);
         }
+        .status-message.loading .material-icons { animation: spin 2s linear infinite; }
+        .status-message.loading p { animation: pulse 1.5s ease-in-out infinite; }
+        .status-message.error .material-icons { color: var(--red); }
+        .status-message.empty .material-icons { color: var(--yellow); }
+
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
 
+        /* --- OS Mode Styles --- */
+
+        /* Android Mode */
+        html.android-mode {
+            --font-family: 'Roboto', sans-serif;
+        }
+        html.android-mode .header {
+             /* Slightly different blur/bg */
+             background-color: rgba(var(--mantle-rgb), 0.85);
+             backdrop-filter: blur(8px);
+             -webkit-backdrop-filter: blur(8px);
+             box-shadow: 0 3px 8px rgba(0,0,0,0.18);
+        }
+        html.android-mode .project-card {
+            border-radius: 8px; /* Less rounded */
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15); /* Material-like shadow */
+            border: none; /* Often no border */
+        }
+         html.android-mode .project-card:hover {
+            box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+            border: none;
+         }
+        html.android-mode .tech-tag {
+            border-radius: 4px; /* Less rounded tags */
+            padding: 0.25rem 0.7rem;
+        }
+        /* Add more android specific styles if needed */
+
+
+        /* iOS Mode */
+        html.ios-mode {
+             /* System font stack often used for iOS web */
+            --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        }
+         html.ios-mode .header {
+             /* Stronger blur, often lighter/darker bg */
+             background-color: rgba(var(--mantle-rgb), 0.7);
+             backdrop-filter: blur(15px);
+             -webkit-backdrop-filter: blur(15px);
+             border-bottom: 1px solid rgba(var(--overlay0-rgb), 0.2); /* Subtle divider */
+             box-shadow: none;
+         }
+        html.ios-mode .project-card {
+            border-radius: 14px; /* More rounded */
+            /* Subtler shadow, more background translucency */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            background-color: rgba(var(--surface0-rgb), 0.8); /* Translucent bg */
+            backdrop-filter: blur(5px); /* Blur behind card */
+             -webkit-backdrop-filter: blur(5px);
+            border: 1px solid rgba(var(--overlay0-rgb), 0.15);
+        }
+        html.ios-mode.light-theme .project-card {
+             background-color: rgba(var(--surface0-rgb), 0.7); /* Lighter translucent bg */
+             border: 1px solid rgba(var(--overlay0-rgb), 0.1);
+         }
+         html.ios-mode .project-card:hover {
+             box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+             border-color: rgba(var(--blue-rgb), 0.3); /* Subtle blue border highlight */
+         }
+        html.ios-mode .tech-tag {
+            border-radius: 1rem; /* Fully rounded tags */
+            /* Maybe flatter colors or different gradient? */
+        }
+        /* Add more iOS specific styles if needed */
+
+        /* --- Responsive --- */
         @media (max-width: 768px) {
-            .header h1 {
-                font-size: 1.4rem;
-            }
-             #theme-toggle {
-                 font-size: 1.7rem;
-             }
-             .main-content {
-                 padding: 2rem 1.5rem;
-             }
-             .projects-container {
-                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Adjust minmax */
-                gap: 2rem;
-             }
+            .header { padding: 0.8rem 1rem; }
+            .header-left { gap: 1rem; }
+            .header h1 { font-size: 1.3rem; }
+            #theme-toggle { font-size: 1.6rem; padding: 0.3rem; }
+            .mode-switcher button { font-size: 0.75rem; padding: 0.25rem 0.6rem;}
+            .main-content { padding: 2rem 1.5rem; margin-top: 5.5rem; }
+            .projects-container { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2rem; }
         }
 
         @media (max-width: 600px) {
-            .header h1 {
-                font-size: 1.3rem;
+            .header { flex-direction: column; align-items: stretch; gap: 0.5rem; padding: 0.6rem 1rem; }
+            .header-left { justify-content: space-between; } /* Put title and controls on same line */
+            .header-controls { justify-content: flex-end; /* Push controls to the right */ }
+            .main-content { padding: 1.5rem 1rem; margin-top: 7.5rem; } /* Increased margin-top */
+            .projects-container { grid-template-columns: 1fr; gap: 1.5rem; }
+            .project-card { border-radius: 10px; }
+            .project-image-container { height: 180px; }
+            .project-title { font-size: 1.2rem; }
+            .footer { padding: 1.5rem 1rem; }
+            .social-links a { font-size: 1.5rem; margin: 0 0.6rem; }
+            html.ios-mode .project-card, html.android-mode .project-card {
+                 border-radius: 10px; /* Consistent radius on mobile */
             }
-            #theme-toggle {
-                 font-size: 1.6rem;
-                 padding: 0.4rem;
-            }
-            .main-content {
-                padding: 1.5rem 1rem; /* Less padding */
-                margin-top: 6rem; /* Adjust header space */
-            }
-            .projects-container {
-                grid-template-columns: 1fr; /* Single column */
-                gap: 1.5rem;
-            }
-             .project-card {
-                 border-radius: 10px;
-             }
-             .project-image-container {
-                 height: 180px; /* Slightly smaller image */
-             }
-             .project-title {
-                 font-size: 1.2rem;
-             }
-             .footer {
-                 padding: 1.5rem 1rem;
-             }
-             .social-links a {
-                 font-size: 1.5rem;
-                 margin: 0 0.6rem;
-             }
         }
 
-        .material-icons {
-             vertical-align: middle;
-        }
+        .material-icons { vertical-align: middle; }
     </style>
 </head>
 <body>
     <header class="header">
-        <h1>Negal's Projects</h1>
-        <button id="theme-toggle" aria-label="Toggle theme">
-            <i class="material-icons">brightness_4</i> <!-- Initial icon -->
-        </button>
+        <div class="header-left"> <!-- Group title and mode switcher -->
+            <h1>Negal's Projects</h1>
+            <div class="mode-switcher">
+                <button data-mode="default" class="active" aria-pressed="true">Default</button>
+                <button data-mode="android" aria-pressed="false">Android</button>
+                <button data-mode="ios" aria-pressed="false">iOS</button>
+            </div>
+        </div>
+        <div class="header-controls"> <!-- Theme toggle -->
+            <button id="theme-toggle" aria-label="Toggle theme">
+                <i class="material-icons">brightness_4</i>
+            </button>
+        </div>
     </header>
 
     <main class="main-content">
         <div class="projects-container">
-            <div class="status-message loading">
-                 <i class="material-icons">hourglass_empty</i> <!-- Icon will spin via CSS -->
+            <div class="status-message loading" role="status" aria-live="polite"> <!-- ARIA for screen readers -->
+                 <i class="material-icons">hourglass_empty</i>
                  <p>Loading Projects...</p>
             </div>
             <!-- Project cards will be injected here -->
@@ -483,103 +455,162 @@
 
     <script>
         const themeToggleButton = document.getElementById('theme-toggle');
+        const modeSwitcherButtons = document.querySelectorAll('.mode-switcher button');
         const projectsContainer = document.querySelector('.projects-container');
         const currentYearSpan = document.getElementById('year');
-        const GITHUB_USERNAME = 'Negal75'; // Your GitHub username
+        const docElement = document.documentElement; // Cache html element
+        const GITHUB_USERNAME = 'Negal75';
 
         // --- Theme Handling ---
         const userPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
         const savedTheme = localStorage.getItem('theme');
-        let currentTheme = 'dark'; // Track current theme state
+        let currentTheme = 'dark';
 
         function applyTheme(theme, initialLoad = false) {
             const newIcon = theme === 'light' ? 'brightness_7' : 'brightness_4';
             const toggleIcon = themeToggleButton.querySelector('i');
 
-            // Animate icon transition (only if not initial load)
             if (!initialLoad && toggleIcon.textContent !== newIcon) {
                 themeToggleButton.classList.add('theme-toggle-transition');
                 toggleIcon.style.opacity = '0';
-                toggleIcon.style.transform = `rotate(${theme === 'light' ? '-' : ''}180deg) scale(0.5)`; // Rotate opposite direction
-
+                toggleIcon.style.transform = `rotate(${theme === 'light' ? '-' : ''}180deg) scale(0.5)`;
                  setTimeout(() => {
                      toggleIcon.textContent = newIcon;
                      toggleIcon.style.opacity = '1';
                      toggleIcon.style.transform = 'rotate(0deg) scale(1)';
-                     setTimeout(() => themeToggleButton.classList.remove('theme-toggle-transition'), 150); // Cleanup class slightly after animation
-                 }, 150); // Halfway through transition duration
+                     setTimeout(() => themeToggleButton.classList.remove('theme-toggle-transition'), 150);
+                 }, 150);
             } else {
-                 toggleIcon.textContent = newIcon; // Set immediately on initial load
+                 toggleIcon.textContent = newIcon;
             }
 
-
             if (theme === 'light') {
-                document.documentElement.classList.add('light-theme');
+                docElement.classList.add('light-theme');
                 localStorage.setItem('theme', 'light');
                 currentTheme = 'light';
             } else {
-                document.documentElement.classList.remove('light-theme');
+                docElement.classList.remove('light-theme');
                 localStorage.setItem('theme', 'dark');
                 currentTheme = 'dark';
             }
+            // Update RGB vars after theme change
+            setRgbVariables();
         }
 
         themeToggleButton.addEventListener('click', () => {
             applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
         });
 
-        // Set initial theme
-        applyTheme(savedTheme || (userPrefersDark ? 'dark' : 'light'), true); // Pass true for initial load
+        // --- Mode Handling ---
+        const savedMode = localStorage.getItem('uiMode') || 'default';
 
+        function applyMode(mode) {
+             // Remove existing mode classes
+             docElement.classList.remove('android-mode', 'ios-mode');
+             // Remove active state from all buttons
+             modeSwitcherButtons.forEach(btn => {
+                 btn.classList.remove('active');
+                 btn.setAttribute('aria-pressed', 'false');
+             });
+
+             const activeButton = document.querySelector(`.mode-switcher button[data-mode="${mode}"]`);
+             if (activeButton) {
+                 activeButton.classList.add('active');
+                 activeButton.setAttribute('aria-pressed', 'true');
+             }
+
+             if (mode === 'android') {
+                 docElement.classList.add('android-mode');
+             } else if (mode === 'ios') {
+                 docElement.classList.add('ios-mode');
+             }
+             // else mode === 'default', no class needed
+
+             localStorage.setItem('uiMode', mode);
+             // Update RGB vars after mode change (might affect styles)
+             setRgbVariables();
+         }
+
+         modeSwitcherButtons.forEach(button => {
+             button.addEventListener('click', () => {
+                 const mode = button.getAttribute('data-mode');
+                 applyMode(mode);
+             });
+         });
+
+
+        // --- Utility: Set RGB Variables ---
+        function setRgbVariables() {
+            // Helper to convert hex/rgb() to R G B string
+            const getRgbString = (colorValue) => {
+                if (!colorValue) return '0 0 0'; // Default fallback
+                colorValue = colorValue.trim();
+                if (colorValue.startsWith('#')) {
+                    const r = parseInt(colorValue.substring(1, 3), 16);
+                    const g = parseInt(colorValue.substring(3, 5), 16);
+                    const b = parseInt(colorValue.substring(5, 7), 16);
+                    return `${r} ${g} ${b}`;
+                } else if (colorValue.startsWith('rgb')) {
+                     // Extract numbers from rgb(r, g, b)
+                     const match = colorValue.match(/(\d+),\s*(\d+),\s*(\d+)/);
+                     return match ? `${match[1]} ${match[2]} ${match[3]}` : '0 0 0';
+                }
+                return '0 0 0'; // Fallback
+            };
+
+            // Get computed style *after* theme/mode changes might have affected variables
+            const computedStyle = getComputedStyle(docElement);
+            docElement.style.setProperty('--mantle-rgb', getRgbString(computedStyle.getPropertyValue('--mantle')));
+            docElement.style.setProperty('--surface0-rgb', getRgbString(computedStyle.getPropertyValue('--surface0')));
+            docElement.style.setProperty('--overlay0-rgb', getRgbString(computedStyle.getPropertyValue('--overlay0'))); // Added for iOS border
+            docElement.style.setProperty('--blue-rgb', getRgbString(computedStyle.getPropertyValue('--blue'))); // Added for iOS hover border
+        }
 
         // --- Project Loading ---
         function getProjectIcon(tech) {
-            if (!tech || tech.length === 0) return 'auto_awesome'; // More generic cool icon
+            // (Keep your existing getProjectIcon function)
+            if (!tech || tech.length === 0) return 'auto_awesome';
             const primaryTech = tech[0].toLowerCase();
             const iconMap = {
-                'bash': 'terminal', 'shell': 'terminal', 'python': 'data_object', // Different icon
+                'bash': 'terminal', 'shell': 'terminal', 'python': 'data_object',
                 'html': 'html', 'css': 'css', 'javascript': 'javascript', 'typescript': 'javascript',
-                'java': 'coffee', 'c#': 'code', 'c++': 'code', 'go': 'code', 'rust': 'code', // Need specific icons or keep generic 'code'
+                'java': 'coffee', 'c#': 'code', 'c++': 'code', 'go': 'code', 'rust': 'code',
                 'dockerfile': 'deployed_code', 'vue': 'web', 'react': 'web', 'angular': 'web',
                 'swift': 'smartphone', 'kotlin': 'smartphone', 'ruby': 'code', 'php': 'php',
-                // Add more mappings...
             };
-            return iconMap[primaryTech] || 'auto_awesome'; // Default if not mapped
+            return iconMap[primaryTech] || 'auto_awesome';
         }
 
          function handleImageError(imgElement, fallbackSrc) {
-             // Add a small delay before trying fallback to avoid rapid attempts if server is slow
-             setTimeout(() => {
+             // (Keep your existing handleImageError function)
+              setTimeout(() => {
                 if (fallbackSrc && imgElement.src !== fallbackSrc && !imgElement.getAttribute('data-fallback-attempted')) {
                     console.log(`Primary image failed (${imgElement.src}), trying fallback: ${fallbackSrc}`);
                     imgElement.src = fallbackSrc;
-                    imgElement.setAttribute('data-fallback-attempted', 'true'); // Mark attempt
+                    imgElement.setAttribute('data-fallback-attempted', 'true');
                 } else {
-                    console.log(`Image loading failed completely for: ${imgElement.src}. Hiding container.`);
+                    console.warn(`Image loading failed completely for: ${imgElement.src}. Hiding container.`);
                     const container = imgElement.closest('.project-image-container');
                     if (container) {
-                         container.style.display = 'none'; // Hide container if all attempts fail
-                         // Optionally adjust card layout if image is hidden
-                         // container.closest('.project-card').classList.add('no-image');
+                         container.style.display = 'none';
                     }
                 }
-             }, 200); // 200ms delay
+             }, 200);
          }
 
         function createProjectCard(repo) {
+            // (Keep your existing createProjectCard function, ensuring it uses the markup structure)
             const card = document.createElement('div');
-            card.className = 'project-card'; // Animation class will be added later
+            card.className = 'project-card';
 
             const iconName = getProjectIcon(repo.tech);
-            const description = repo.description ? repo.description.replace(/:.*:/g, '') : 'No description provided.'; // Basic emoji removal
-            const escapedDescription = description.replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); // Sanitize for HTML attribute
+            const description = repo.description ? repo.description.replace(/:.*:/g, '') : 'No description provided.';
+            const escapedDescription = description.replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
             const primaryImage = `https://raw.githubusercontent.com/${repo.owner}/${repo.name}/${repo.defaultBranch}/preview.png`;
             const fallbackImage = `https://raw.githubusercontent.com/${repo.owner}/${repo.name}/${repo.defaultBranch}/screenshot.png`;
 
-            // Combine language and topics, remove duplicates and nulls
             const allTech = Array.from(new Set([repo.language, ...(repo.topics || [])])).filter(Boolean);
-
 
             const markup = `
                 <div class="project-image-container">
@@ -610,63 +641,45 @@
         }
 
        async function fetchRepositories() {
+            // (Keep your existing fetchRepositories function, ensuring it uses the new status message classes)
             projectsContainer.innerHTML = `
-                 <div class="status-message loading">
+                 <div class="status-message loading" role="status" aria-live="polite">
                      <i class="material-icons">hourglass_empty</i>
                      <p>Loading Projects...</p>
-                 </div>`; // Show loading state immediately
+                 </div>`;
 
             try {
-                 // Consider using a proxy or serverless function for caching in production
-                const response = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=pushed&per_page=100`); // Sort by pushed (more recent activity)
+                const response = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=pushed&per_page=100`);
                 if (!response.ok) {
-                     // Try to parse GitHub error message if available
                      let errorMsg = `GitHub API request failed: ${response.status} ${response.statusText}`;
-                     try {
-                         const errorData = await response.json();
-                         if (errorData.message) {
-                             errorMsg += ` - ${errorData.message}`;
-                         }
-                     } catch (e) { /* Ignore parsing error */ }
+                     try { const errorData = await response.json(); if (errorData.message) { errorMsg += ` - ${errorData.message}`; } } catch (e) {}
                     throw new Error(errorMsg);
                 }
                 const data = await response.json();
-
-                // Filter out forks and potentially archived repos
                 const activeRepos = data.filter(repo => !repo.fork && !repo.archived);
 
                 const repositories = activeRepos.map(repo => ({
-                    name: repo.name,
-                    description: repo.description,
-                    url: repo.html_url,
-                    language: repo.language, // Keep separate for primary icon logic if needed
-                    topics: repo.topics || [], // Ensure topics is an array
-                    owner: GITHUB_USERNAME,
-                    defaultBranch: repo.default_branch
+                    name: repo.name, description: repo.description, url: repo.html_url,
+                    language: repo.language, topics: repo.topics || [], owner: GITHUB_USERNAME,
+                    defaultBranch: repo.default_branch, tech: [repo.language, ...(repo.topics || [])].filter(Boolean) // Pass combined tech for icon logic
                 }));
 
-                // Sort repositories maybe by name or last updated locally if needed
-                // repositories.sort((a, b) => a.name.localeCompare(b.name));
-
-                projectsContainer.innerHTML = ''; // Clear loading message
+                projectsContainer.innerHTML = ''; // Clear loading
 
                 if (repositories.length === 0) {
-                     projectsContainer.innerHTML = `<div class="status-message empty"><i class="material-icons">info</i><p>No public, non-forked repositories found.</p></div>`;
+                     projectsContainer.innerHTML = `<div class="status-message empty" role="status" aria-live="polite"><i class="material-icons">info</i><p>No public, non-forked repositories found.</p></div>`;
                 } else {
                     repositories.forEach((repo, index) => {
                         const cardElement = createProjectCard(repo);
                         projectsContainer.appendChild(cardElement);
-                        // Stagger the animation
-                        setTimeout(() => {
-                            cardElement.classList.add('animate-in');
-                        }, index * 100); // Delay each card by 100ms
+                        setTimeout(() => { cardElement.classList.add('animate-in'); }, index * 100);
                     });
                 }
 
             } catch (error) {
                 console.error('Error fetching repositories:', error);
                 projectsContainer.innerHTML = `
-                     <div class="status-message error">
+                     <div class="status-message error" role="alert" aria-live="assertive">
                          <i class="material-icons">error_outline</i>
                          <p>Error loading projects.</p>
                          <p><small>${error.message}</small></p>
@@ -676,30 +689,13 @@
 
         // --- Initialisation ---
         currentYearSpan.textContent = new Date().getFullYear();
-        fetchRepositories();
 
-        // Add RGB variables for backdrop-filter compatibility after initial theme set
-        function setMantleRGB() {
-            const mantleColor = getComputedStyle(document.documentElement).getPropertyValue('--mantle').trim();
-            // Basic hex to rgb conversion (assumes #RRGGBB format)
-            if (mantleColor.startsWith('#')) {
-                 const r = parseInt(mantleColor.substring(1, 3), 16);
-                 const g = parseInt(mantleColor.substring(3, 5), 16);
-                 const b = parseInt(mantleColor.substring(5, 7), 16);
-                 document.documentElement.style.setProperty('--mantle-rgb', `${r} ${g} ${b}`);
-            }
-        }
-        setMantleRGB(); // Set initially
-        // Update RGB variable when theme changes
-        const observer = new MutationObserver((mutationsList) => {
-             for (let mutation of mutationsList) {
-                 if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
-                     setMantleRGB();
-                     break;
-                 }
-             }
-         });
-         observer.observe(document.documentElement, { attributes: true });
+        // Apply initial theme FIRST, then mode, then fetch data
+        applyTheme(savedTheme || (userPrefersDark ? 'dark' : 'light'), true);
+        applyMode(savedMode); // Apply saved or default mode
+        fetchRepositories(); // Fetch data after theme/mode are set
+
+        // No need for MutationObserver for RGB vars, call setRgbVariables() after theme/mode changes.
 
     </script>
 </body>
