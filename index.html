@@ -4,427 +4,840 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Negal's Projects</title>
-    <!-- Fonts: Inter (Default), Roboto (Android), System UI (iOS) -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Fonts: Inter (Default), Roboto (Android), System UI (iOS), Special Elite (Vintage) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=Special+Elite&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <!-- Favicons (keep your existing links) -->
+    <!-- Favicons -->
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
     <style>
         :root {
-            /* Catppuccin Latte (Light Theme) */
-            --rosewater-light: #dc8a78; --flamingo-light: #dd7878; --pink-light: #ea76cb; --mauve-light: #8839ef; --red-light: #d20f39; --maroon-light: #e64553; --peach-light: #fe640b; --yellow-light: #df8e1d; --green-light: #40a02b; --teal-light: #179299; --sky-light: #04a5e5; --sapphire-light: #209fb5; --blue-light: #1e66f5; --lavender-light: #7287fd; --text-light: #4c4f69; --subtext1-light: #5c5f77; --subtext0-light: #6c6f85; --overlay2-light: #7c7f93; --overlay1-light: #8c8fa1; --overlay0-light: #9ca0b0; --surface2-light: #acb0be; --surface1-light: #bcc0cc; --surface0-light: #ccd0da; --base-light: #eff1f5; --mantle-light: #e6e9ef; --crust-light: #dce0e8;
+            /* --- Monokai Dark Theme Colors (Default) --- */
+            --base-dark: #272822;        /* Background */
+            --mantle-dark: #353630;      /* Slightly lighter background for header/footer */
+            --surface0-dark: #3E3D32;    /* Card background, Mode Switcher background */
+            --surface1-dark: #4A4940;    /* Card hover background, Mode Switcher button hover */
+            --surface2-dark: #585b70; /* Keeping Catppuccin Dark for this surface level if needed */
+            --text-dark: #f8f8f2;         /* Foreground text */
+            --subtext0-dark: #A1A193;     /* Description text, muted text (Comment color approx) */
+            --subtext1-dark: #bac2de; /* Keeping Catppuccin Dark for this subtext level */
+            --overlay0-dark: #75715e;     /* Icons, less prominent elements (Comment color) */
+            --overlay1-dark: #7f849c; /* Keeping Catppuccin Dark for this overlay level */
+            --overlay2-dark: #9399b2; /* Keeping Catppuccin Dark for this overlay level */
+            --blue-dark: #66D9EF;         /* Links, primary actions (Cyan/Blue) */
+            --green-dark: #A6E22E;        /* Secondary accents, success (String color) */
+            --mauve-dark: #F92672;        /* Header title color, another accent (Keyword color) */
+            --pink-dark: #F92672;         /* Hover effects, interactive highlights (Keyword color) */
+            --peach-dark: #FD971F;        /* Icon colors (Orange) */
+            --flamingo-dark: #F92672;     /* Hover icon colors (Keyword color) */
+            --lavender-dark: #AE81FF;      /* Hover text colors, secondary highlights (Number/Purple) */
+            --teal-dark: #A6E22E;          /* Link hover (String color) */
+            --sky-dark: #66D9EF;           /* Social links hover (Cyan/Blue) */
+            --rosewater-dark: #f5e0dc; /* Keeping Catppuccin Dark - Rosewater */
+            --crust-dark: #11111b; /* Keeping Catppuccin Dark - Crust */
 
-            /* Catppuccin Mocha (Dark Theme) */
-            --rosewater-dark: #f5e0dc; --flamingo-dark: #f2cdcd; --pink-dark: #f5c2e7; --mauve-dark: #cba6f7; --red-dark: #f38ba8; --maroon-dark: #eba0ac; --peach-dark: #fab387; --yellow-dark: #f9e2af; --green-dark: #a6e3a1; --teal-dark: #94e2d5; --sky-dark: #89dceb; --sapphire-dark: #74c7ec; --blue-dark: #89b4fa; --lavender-dark: #b4befe; --text-dark: #cdd6f4; --subtext1-dark: #bac2de; --subtext0-dark: #a6adc8; --overlay2-dark: #9399b2; --overlay1-dark: #7f849c; --overlay0-dark: #6c7086; --surface2-dark: #585b70; --surface1-dark: #45475a; --surface0-dark: #313244; --base-dark: #1e1e2e; --mantle-dark: #181825; --crust-dark: #11111b;
+            /* --- Monokai Light Theme Colors --- */
+            --base-light: #F9F8F5;       /* Light Paper Background */
+            --mantle-light: #F0F0EC;     /* Slightly darker for contrast */
+            --surface0-light: #E8E8E4;   /* Card Background, Mode Switcher */
+            --surface1-light: #E0E0DC;   /* Card Hover, Mode Switcher Hover */
+            --surface2-light: #d6d6d2;
+            --text-light: #383830;        /* Dark Text */
+            --subtext0-light: #585850;    /* Muted description text */
+            --subtext1-light: #6e6e66;
+            --overlay0-light: #888880;    /* Lighter icons and elements */
+            --overlay1-light: #9e9ea8;
+            --overlay2-light: #b8b8c0;
+            --blue-light: #0088AA;        /* Cyan-like Blue for links */
+            --green-light: #55AA00;       /* Green for success/secondary */
+            --mauve-light: #AA0088;       /* Magenta/Pink for header title */
+            --pink-light: #AA0088;        /* Pink for hover effects */
+            --peach-light: #BB6600;       /* Orange for icons */
+            --flamingo-light: #AA0088;    /* Pink for hover icons */
+            --lavender-light: #663399;     /* Purple for hover text */
+            --teal-light: #00AA55;         /* Teal for link hover */
+            --sky-light: #0088AA;          /* Cyan-like Blue for social hover */
+            --rosewater-light: #fceee9;
+            --crust-light: #e2e1dd;
 
-             /* Default to Dark Theme */
-            --rosewater: var(--rosewater-dark); --flamingo: var(--flamingo-dark); --pink: var(--pink-dark); --mauve: var(--mauve-dark); --red: var(--red-dark); --maroon: var(--maroon-dark); --peach: var(--peach-dark); --yellow: var(--yellow-dark); --green: var(--green-dark); --teal: var(--teal-dark); --sky: var(--sky-dark); --sapphire: var(--sapphire-dark); --blue: var(--blue-dark); --lavender: var(--lavender-dark); --text: var(--text-dark); --subtext1: var(--subtext1-dark); --subtext0: var(--subtext0-dark); --overlay2: var(--overlay2-dark); --overlay1: var(--overlay1-dark); --overlay0: var(--overlay0-dark); --surface2: var(--surface2-dark); --surface1: var(--surface1-dark); --surface0: var(--surface0-dark); --base: var(--base-dark); --mantle: var(--mantle-dark); --crust: var(--crust-dark);
 
-             /* Animation timing */
-             --timing-fast: 0.2s;
-             --timing-medium: 0.4s;
-             --timing-slow: 0.6s;
+            /* Vintage Theme Colors (unchanged for now) */
+            --vintage-paper: #f8f0e3; /* Paper background */
+            --vintage-clipboard: #bdae95; /* Clipboard edge color */
+            --vintage-text: #333; /* Dark text for paper */
+            --vintage-shadow: rgba(0, 0, 0, 0.2); /* Shadow for depth */
+            --vintage-highlight: #a0c4ff; /* Highlight color */
+            --vintage-accent: #6d6875; /* Muted accent color */
+
+            /* Default Theme (Dark/Monokai) - Base */
+            --rosewater: var(--rosewater-dark);
+            --text: var(--text-dark); --subtext1: var(--subtext1-dark); --subtext0: var(--subtext0-dark); --overlay2: var(--overlay2-dark); --overlay1: var(--overlay1-dark); --overlay0: var(--overlay0-dark); --surface2: var(--surface2-dark); --surface1: var(--surface1-dark); --surface0: var(--surface0-dark); --base: var(--base-dark); --mantle: var(--mantle-dark); --crust: var(--crust-dark); --blue: var(--blue-dark); --green: var(--green-dark); --mauve: var(--mauve-dark); --pink: var(--pink-dark); --peach: var(--peach-dark); --flamingo: var(--flamingo-dark); --lavender: var(--lavender-dark); --teal: var(--teal-dark); --sky: var(--sky-dark);
+
+            /* Animation & Base Styling */
+             --timing-fast: 0.15s;
+             --timing-medium: 0.3s;
+             --timing-slow: 0.5s;
              --easing-standard: cubic-bezier(0.4, 0, 0.2, 1);
              --easing-decelerate: cubic-bezier(0.0, 0, 0.2, 1);
              --easing-accelerate: cubic-bezier(0.4, 0, 1, 1);
+             --easing-sharp: cubic-bezier(0.4, 0, 0.6, 1);
 
              /* Default Font */
              --font-family-default: 'Inter', sans-serif;
-             --font-family: var(--font-family-default); /* Dynamic font */
+             --font-family: var(--font-family-default);
         }
 
         html.light-theme {
-            --rosewater: var(--rosewater-light); --flamingo: var(--flamingo-light); --pink: var(--pink-light); --mauve: var(--mauve-light); --red: var(--red-light); --maroon: var(--maroon-light); --peach: var(--peach-light); --yellow: var(--yellow-light); --green: var(--green-light); --teal: var(--teal-light); --sky: var(--sky-light); --sapphire: var(--sapphire-light); --blue: var(--blue-light); --lavender: var(--lavender-light); --text: var(--text-light); --subtext1: var(--subtext1-light); --subtext0: var(--subtext0-light); --overlay2: var(--overlay2-light); --overlay1: var(--overlay1-light); --overlay0: var(--overlay0-light); --surface2: var(--surface2-light); --surface1: var(--surface1-light); --surface0: var(--surface0-light); --base: var(--base-light); --mantle: var(--mantle-light); --crust: var(--crust-light);
+            /* Monokai Light Theme Colors Applied */
+            --rosewater: var(--rosewater-light);
+             --text: var(--text-light); --subtext1: var(--subtext1-light); --subtext0: var(--subtext0-light); --overlay2: var(--overlay2-light); --overlay1: var(--overlay1-light); --overlay0: var(--overlay0-light); --surface2: var(--surface2-light); --surface1: var(--surface1-light); --surface0: var(--surface0-light); --base: var(--base-light); --mantle: var(--mantle-light); --crust: var(--crust-light); --blue: var(--blue-light); --green: var(--green-light); --mauve: var(--mauve-light); --pink: var(--pink-light); --peach: var(--peach-light); --flamingo: var(--flamingo-light); --lavender: var(--lavender-light); --teal: var(--teal-light); --sky: var(--sky-light);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: var(--font-family); /* Use dynamic font */
-        }
-
-        @keyframes wave {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
-
-
+        /* Base element styling (No changes) */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: var(--font-family); }
         body {
-            background-color: var(--base);
-            color: var(--text);
-            line-height: 1.6;
-            transition: background-color 0.5s var(--easing-standard), color 0.5s var(--easing-standard);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            background: linear-gradient(315deg, var(--base) 0%, var(--mantle) 25%, var(--crust) 50%, var(--mantle) 75%, var(--base) 100%);
-            background-size: 400% 400%;
+            background-color: var(--base); color: var(--text); line-height: 1.6;
+            transition: background-color var(--timing-medium) var(--easing-standard), color var(--timing-medium) var(--easing-standard);
+            min-height: 100vh; display: flex; flex-direction: column;
+            background: linear-gradient(315deg, var(--base) 0%, var(--mantle) 50%, var(--base) 100%);
+            background-size: 200% 200%;
             animation: wave 30s ease infinite;
         }
-
+        @keyframes wave {
+            0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; }
+        }
         @media (prefers-reduced-motion: reduce) {
-            body, .project-card, .project-card:hover, .tech-tag:hover, .social-links a:hover, #theme-toggle, .footer, .header, .mode-switcher button {
-                animation: none !important;
-                transition: none !important;
-                transform: none !important;
-            }
-             .project-card.animate-in { opacity: 1; transform: translateY(0); }
+             body, .project-card, .project-card:hover, .tech-tag:hover, .social-links a:hover, #theme-toggle, .footer, .header, .mode-selector button, .project-icon, .project-link .material-icons { animation: none !important; transition: none !important; transform: none !important; }
+             .project-card.is-visible { opacity: 1; transform: translateY(0); }
              .header, .footer { opacity: 1; transform: translateY(0); }
+             .project-image-container img { transform: scale(1); opacity: 1; }
         }
 
+        /* --- DEFAULT STYLES (Applied unless overridden by mode) --- */
+
+        /* Header Default (Slightly adjusted shadow for light themes) */
         .header {
-            background-color: rgba(var(--mantle-rgb, 24 24 37) / 0.8);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            color: var(--text);
-            padding: 0.8rem 1.5rem; /* Slightly less padding top/bottom */
-            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 100;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: background-color 0.5s var(--easing-standard), backdrop-filter 0.5s var(--easing-standard);
-            animation: fadeIn var(--timing-medium) var(--easing-decelerate);
+            background-color: rgba(var(--mantle-rgb, 53 54 48) / 0.8); /* Monokai Mantle RGB */
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            color: var(--text); padding: 0.8rem 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* Default shadow */
+            position: fixed; width: 100%; top: 0; z-index: 100;
+            display: flex; justify-content: space-between; align-items: center;
+            transition: background-color var(--timing-medium) var(--easing-standard),
+                        backdrop-filter var(--timing-medium) var(--easing-standard),
+                        border-color var(--timing-medium) var(--easing-standard),
+                        box-shadow var(--timing-medium) var(--easing-standard);
+            border-bottom: 1px solid transparent;
+            animation: fadeIn var(--timing-medium) var(--easing-decelerate) backwards;
+            will-change: background-color, backdrop-filter, border-color, box-shadow;
         }
-
-        :root { --mantle-rgb: 24 24 37; --surface0-rgb: 49 50 68; } /* Dark theme default RGBs */
-        html.light-theme { --mantle-rgb: 230 233 239; --surface0-rgb: 204 208 218; } /* Light theme RGBs */
-
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
+        html.light-theme .header {
+            box-shadow: 0 1px 5px rgba(0,0,0,0.05); /* Lighter shadow for light theme */
         }
+        .header-left { display: flex; align-items: center; gap: 1.5rem; }
+        .header h1 { font-size: 1.5rem; margin: 0; font-weight: 700; color: var(--mauve); }
+        .header-controls { display: flex; align-items: center; gap: 0.5rem; }
 
-        .header h1 {
-            font-size: 1.5rem; /* Adjusted size */
-            margin: 0;
-            font-weight: 700;
-            color: var(--mauve);
+        /* --- SEGMENTED CONTROL STYLES (Improved contrast and consistency) --- */
+        .mode-selector { display: flex; align-items: center; } /* Ensure alignment in header */
+        .segmented-control {
+            display: inline-flex; /* Arrange buttons horizontally */
+            border-radius: 0.8rem; /* Rounded corners for the control */
+            background-color: var(--surface0); /* Background color */
+            box-shadow: inset 0 1px 2px rgba(0,0,0,0.08); /* Slightly adjusted shadow */
+            overflow: hidden; /* Clip button corners nicely */
+            transition: background-color var(--timing-medium) var(--easing-standard), box-shadow var(--timing-medium) var(--easing-standard);
+            border: 1px solid var(--surface1); /* Added border for better definition */
         }
-
-        .header-controls {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem; /* Reduced gap */
+        html.light-theme .segmented-control {
+            box-shadow: inset 0 1px 1px rgba(0,0,0,0.05); /* Lighter shadow for light theme */
+            border-color: var(--surface2);
         }
-
-        .mode-switcher {
-             display: flex;
-             gap: 0.3rem;
-             background-color: var(--surface0);
-             padding: 0.2rem;
-             border-radius: 1rem;
-             box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
-        }
-         .mode-switcher button {
-             background: none;
-             border: none;
-             color: var(--overlay1);
-             padding: 0.3rem 0.7rem;
-             font-size: 0.8rem;
-             font-weight: 500;
-             cursor: pointer;
-             border-radius: 0.8rem;
-             transition: background-color var(--timing-fast) var(--easing-standard), color var(--timing-fast) var(--easing-standard), transform var(--timing-fast) ease-out;
-         }
-         .mode-switcher button.active {
-             background-color: var(--base);
-             color: var(--blue);
-             box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-             transform: scale(1.05);
-         }
-         .mode-switcher button:not(.active):hover {
-             color: var(--text);
-             background-color: var(--surface1);
-         }
-
-
-        #theme-toggle {
+        .segmented-control-button {
             background: none;
             border: none;
-            color: var(--text);
+            padding: 0.4rem 1rem; /* Adjust padding as needed */
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--subtext0); /* Muted text color */
             cursor: pointer;
-            font-size: 1.7rem; /* Adjusted */
-            padding: 0.4rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            transition: color var(--timing-fast) var(--easing-standard),
-                        background-color var(--timing-fast) var(--easing-standard),
-                        transform var(--timing-fast) ease-out;
-            position: relative;
-            overflow: hidden;
+            transition: background-color var(--timing-fast) var(--easing-standard), color var(--timing-fast) var(--easing-standard);
+            -webkit-appearance: none; /* Remove default button styling in some browsers */
+            -moz-appearance: none;
+            appearance: none;
+            position: relative; /* For active state underline */
         }
-        #theme-toggle i {
-            transition: transform var(--timing-medium) var(--easing-standard), opacity var(--timing-medium) var(--easing-standard);
+        .segmented-control-button:hover, .segmented-control-button:focus {
+            background-color: var(--surface1); /* Hover/focus background */
+            color: var(--text);
+            outline: none; /* Remove default focus outline */
         }
-        #theme-toggle:hover {
-            color: var(--blue);
-            background-color: var(--surface0);
-            transform: scale(1.1) rotate(15deg);
+        html.light-theme .segmented-control-button:hover, html.light-theme .segmented-control-button:focus {
+            background-color: var(--surface0-light); /* Lighter hover for light theme */
         }
-        #theme-toggle:active { transform: scale(0.95); }
-        .theme-toggle-transition .material-icons {
-            transform: rotate(180deg) scale(0.5);
-            opacity: 0;
+        .segmented-control-button.active {
+            color: var(--blue); /* Active text color */
+            font-weight: 600;
         }
-
-        .main-content {
-            margin-top: 6rem; /* Adjusted for header */
-            padding: 2.5rem;
-            flex-grow: 1;
+        .segmented-control-button.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 2px; /* Active state indicator line thickness */
+            background-color: var(--blue); /* Active state indicator line color */
+            display: block;
+            border-radius: 1rem 1rem 0 0; /* Rounded top corners for indicator line */
         }
 
-        .projects-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 2.5rem;
+        /* Remove old mode-selector button and dropdown styles (No changes) */
+        .mode-selector #mode-button, .mode-selector .mode-dropdown {
+            display: none !important; /* Hide old dropdown elements */
         }
 
+
+        /* Theme Toggle Default (Slightly adjusted hover for light themes) */
+        #theme-toggle {
+             background: none; border: none; color: var(--text); cursor: pointer; font-size: 1.7rem; padding: 0.4rem; display: flex; align-items: center; justify-content: center; border-radius: 50%;
+             transition: color var(--timing-fast) var(--easing-standard), background-color var(--timing-fast) var(--easing-standard), transform var(--timing-medium) var(--easing-sharp);
+             position: relative; overflow: hidden; will-change: color, background-color, transform;
+        }
+        #theme-toggle i { transition: transform var(--timing-medium) var(--easing-standard), opacity var(--timing-medium) var(--easing-standard); }
+        #theme-toggle:hover { color: var(--blue); background-color: var(--surface0); transform: scale(1.1) rotate(20deg); }
+        html.light-theme #theme-toggle:hover {
+            background-color: var(--surface1-light); /* Lighter hover for light theme */
+        }
+        #theme-toggle:active { transform: scale(0.95) rotate(5deg); }
+
+        /* Main Content / Grid (No changes) */
+        .main-content { margin-top: 6rem; padding: 2.5rem; flex-grow: 1; }
+        .projects-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2.5rem; }
+
+        /* Project Card Default (Slightly adjusted shadow and border for light themes) */
         .project-card {
             background: var(--surface0);
             border-radius: 12px;
             border: 1px solid var(--surface1);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.12);
             transition: transform var(--timing-medium) var(--easing-standard),
                         box-shadow var(--timing-medium) var(--easing-standard),
                         border-color var(--timing-medium) var(--easing-standard),
-                        background-color var(--timing-medium) var(--easing-standard); /* Added background */
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            opacity: 0;
-            transform: translateY(20px);
-            will-change: transform, opacity, box-shadow; /* Performance hint */
+                        background-color var(--timing-medium) var(--easing-standard),
+                        background var(--timing-medium) var(--easing-standard);
+            display: flex; flex-direction: column; overflow: hidden;
+            opacity: 0; transform: translateY(30px);
+            will-change: transform, opacity, box-shadow, border-color, background, background-color;
+            backdrop-filter: none;
+             -webkit-backdrop-filter: none;
         }
-
-        @keyframes cardEnter {
-            to { opacity: 1; transform: translateY(0); }
+        html.light-theme .project-card {
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06); /* Lighter shadow for light theme */
+            border-color: var(--surface2);
         }
-        .project-card.animate-in {
-            animation: cardEnter var(--timing-slow) var(--easing-decelerate) forwards;
+        .project-card.is-visible {
+             opacity: 1; transform: translateY(0);
+             transition: opacity var(--timing-slow) var(--easing-decelerate), transform var(--timing-slow) var(--easing-decelerate), background-color var(--timing-medium) var(--easing-standard);
         }
-
         .project-card:hover {
             transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
             border-color: var(--blue);
+            background-color: var(--surface1);
         }
-
+        html.light-theme .project-card:hover {
+            background-color: var(--surface0-light); /* Lighter hover for light theme */
+            box-shadow: 0 5px 12px rgba(0,0,0,0.08); /* Lighter shadow for light theme hover */
+            border-color: var(--blue-light);
+        }
         .project-image-container {
-            width: 100%;
-            height: 200px;
-            background: linear-gradient(135deg, var(--surface1), var(--surface2));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            position: relative;
+             width: 100%; height: 200px; background: var(--surface1); display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; transition: background-color var(--timing-medium) var(--easing-standard);
+        }
+        html.light-theme .project-image-container {
+            background: var(--surface1-light); /* Lighter image container for light theme */
         }
         .project-image-container img {
-            width: 100%; height: 100%; object-fit: cover; display: block;
-            transition: opacity var(--timing-medium) ease-in-out, transform var(--timing-medium) var(--easing-standard);
-            opacity: 0; transform: scale(1.05);
+            width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0; transform: scale(1.1);
+            transition: opacity var(--timing-medium) ease-in-out, transform var(--timing-slow) var(--easing-standard); will-change: opacity, transform;
         }
         .project-image-container img.loaded { opacity: 1; transform: scale(1); }
-        .project-card:hover .project-image-container img { transform: scale(1.05); }
+        .project-image-container.img-error { background-color: var(--surface0); } /* Fallback background if image fails */
+        html.light-theme .project-image-container.img-error { background-color: var(--surface0-light); } /* Fallback background for light theme */
+        .project-image-container.img-error img { opacity: 0; } /* Hide broken image icon */
+        .project-card:hover .project-image-container img.loaded { transform: scale(1.05); transition-duration: var(--timing-medium); }
 
+        /* Card Content Defaults (Slightly adjusted colors for light theme hover) */
         .project-content { padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1; }
         .project-header { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1rem; }
-        .project-icon { font-size: 2rem; color: var(--peach); transition: color var(--timing-fast) var(--easing-standard); }
-        .project-card:hover .project-icon { color: var(--flamingo); }
-        .project-title { color: var(--blue); font-size: 1.3rem; margin: 0; font-weight: 600; transition: color var(--timing-fast) var(--easing-standard); }
-        .project-card:hover .project-title { color: var(--lavender); }
-        .project-description {
-            color: var(--subtext0); margin-bottom: 1.5rem; flex-grow: 1;
-            display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical;
-            overflow: hidden; text-overflow: ellipsis; min-height: 64px;
-            transition: color var(--timing-fast) var(--easing-standard);
-        }
-        .project-card:hover .project-description { color: var(--subtext1); }
-        .project-link {
-            color: var(--green); text-decoration: none; display: inline-flex; align-items: center;
-            margin-bottom: 1.5rem; transition: color var(--timing-fast) var(--easing-standard), transform var(--timing-fast) ease-out;
-            margin-top: auto; font-weight: 500; align-self: flex-start;
-        }
-        .project-link:hover { color: var(--teal); transform: translateX(4px); }
-        .project-link .material-icons { font-size: 1.2rem; margin-left: 0.4rem; transition: transform var(--timing-fast) ease-out; }
-        .project-link:hover .material-icons { transform: translateX(2px); }
+        .project-icon { font-size: 2.1rem; color: var(--peach); transition: color var(--timing-fast) var(--easing-standard), transform var(--timing-medium) var(--easing-sharp); will-change: color, transform; } /* Slightly bigger icon */
+        .project-card:hover .project-icon { color: var(--flamingo); transform: rotate(10deg) scale(1.1); }
+        html.light-theme .project-card:hover .project-icon { color: var(--flamingo-light); }
+        .project-title { color: var(--blue); font-size: 1.3rem; margin: 0; font-weight: 600; transition: color var(--timing-fast) var(--easing-standard), transform var(--timing-medium) var(--easing-standard); will-change: color, transform; }
+        .project-card:hover .project-title { color: var(--lavender); transform: translateY(-2px); }
+        html.light-theme .project-card:hover .project-title { color: var(--lavender-light); }
+        .project-description { color: var(--subtext0); margin-bottom: 1.5rem; flex-grow: 1; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; min-height: 64px; transition: color var(--timing-medium) var(--easing-standard); }
+        html.light-theme .project-description { color: var(--subtext0-light); }
+        .project-card:hover .project-description { color: var(--text); }
+        html.light-theme .project-card:hover .project-description { color: var(--text-light); }
+        .project-link { color: var(--green); text-decoration: none; display: inline-flex; align-items: center; margin-bottom: 1.5rem; transition: color var(--timing-fast) var(--easing-standard), transform var(--timing-medium) var(--easing-sharp); margin-top: auto; font-weight: 500; align-self: flex-start; will-change: color, transform; }
+        .project-card:hover .project-link { color: var(--teal); transform: translateX(6px); }
+        html.light-theme .project-card:hover .project-link { color: var(--teal-light); }
+        .project-link .material-icons { font-size: 1.2rem; margin-left: 0.4rem; transition: transform var(--timing-medium) var(--easing-sharp); will-change: transform; }
+        .project-link:hover .material-icons { transform: translateX(4px) rotate(5deg); }
 
+        /* Tech Tag Default (Slightly adjusted colors for light theme) */
         .project-tech { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 0.5rem; }
         .tech-tag {
-            background: linear-gradient(45deg, var(--blue), var(--mauve));
-            color: var(--crust); padding: 0.3rem 0.8rem; border-radius: 1rem;
+            background: var(--blue);
+            color: var(--base);
+            padding: 0.3rem 0.8rem; border-radius: 1rem;
             font-size: 0.8rem; font-weight: 500;
-            transition: transform var(--timing-fast) var(--easing-standard),
-                        box-shadow var(--timing-fast) var(--easing-standard),
-                        background var(--timing-fast) var(--easing-standard); /* Added background transition */
+            transition: transform var(--timing-fast) var(--easing-sharp), box-shadow var(--timing-fast) var(--easing-standard), background-color var(--timing-medium) var(--easing-standard), color var(--timing-medium) var(--easing-standard);
             box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            will-change: transform, box-shadow, background-color, color;
+            border: none;
+        }
+        html.light-theme .tech-tag {
+            background: var(--blue-light); /* Lighter blue for light theme */
+            color: var(--text-light); /* Darker text for light theme tag */
+            box-shadow: 0 1px 2px rgba(0,0,0,0.08); /* Lighter shadow for light theme */
         }
         .tech-tag:hover {
-            transform: translateY(-2px) scale(1.05);
-            box-shadow: 0 3px 6px rgba(0,0,0,0.15);
-            background: linear-gradient(45deg, var(--lavender), var(--pink)); /* Change gradient on hover */
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.18);
+            background-color: var(--lavender);
+        }
+        html.light-theme .tech-tag:hover {
+            background-color: var(--lavender-light); /* Lighter lavender for light theme hover */
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1); /* Lighter shadow for light theme hover */
         }
 
+        /* Footer Default (Slightly adjusted border for light themes) */
         .footer {
-            background-color: var(--mantle);
-            color: var(--text); text-align: center; padding: 2rem 1rem;
-            margin-top: 3rem; position: relative;
-            box-shadow: 0 -4px 15px rgba(0,0,0,0.1);
+            background-color: var(--mantle); color: var(--text); text-align: center; padding: 2rem 1rem; margin-top: 3rem; position: relative;
+            box-shadow: 0 -4px 10px rgba(0,0,0,0.08);
             border-top: 1px solid var(--surface0);
-            transition: background-color 0.5s var(--easing-standard), opacity var(--timing-medium) ease-out, transform var(--timing-medium) ease-out;
-            animation: slideUp var(--timing-slow) var(--easing-decelerate) 0.5s backwards; /* Delay footer animation slightly */
-            will-change: opacity, transform;
+            transition: background-color var(--timing-medium) var(--easing-standard), border-color var(--timing-medium) var(--easing-standard), box-shadow var(--timing-medium) var(--easing-standard);
+            animation: slideUp var(--timing-slow) var(--easing-decelerate) 0.2s backwards;
+            will-change: opacity, transform, background-color, border-color, box-shadow;
+        }
+        html.light-theme .footer {
+            border-top-color: var(--surface1-light); /* Lighter border for light theme */
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.04); /* Lighter shadow for light theme */
         }
         .footer p { margin-bottom: 0.8rem; color: var(--subtext0); font-size: 0.9rem; }
-
+        html.light-theme .footer p { color: var(--subtext0-light); }
         .social-links a {
-            color: var(--overlay1); margin: 0 0.8rem; font-size: 1.6rem;
-            text-decoration: none;
-            transition: color var(--timing-fast) var(--easing-standard), transform var(--timing-fast) var(--easing-standard);
-            display: inline-block; /* Needed for transform */
+            color: var(--overlay1); margin: 0 0.8rem; font-size: 1.6rem; text-decoration: none; transition: color var(--timing-fast) var(--easing-standard), transform var(--timing-medium) var(--easing-sharp); display: inline-block; will-change: color, transform;
         }
-        .social-links a:hover { color: var(--sky); transform: translateY(-4px) scale(1.1); }
+        html.light-theme .social-links a { color: var(--overlay0-light); }
+        .social-links a:hover { color: var(--sky); transform: translateY(-5px) scale(1.15) rotate(-5deg); }
+        html.light-theme .social-links a:hover { color: var(--sky-light); }
         .social-links svg { width: 26px; height: 26px; fill: currentColor; vertical-align: middle; }
 
+        /* Status Message Default (Adjusted colors for light theme) */
         .status-message {
-            text-align: center; padding: 4rem 1rem; color: var(--subtext0);
-            font-size: 1.2rem; grid-column: 1 / -1;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
+             text-align: center; padding: 4rem 1rem; color: var(--subtext0); font-size: 1.2rem; grid-column: 1 / -1; display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: 0; animation: fadeIn var(--timing-medium) var(--easing-standard) forwards;
         }
-        .status-message .material-icons {
-            font-size: 3rem; margin-bottom: 1rem; color: var(--overlay0);
-        }
-        .status-message.loading .material-icons { animation: spin 2s linear infinite; }
+        html.light-theme .status-message { color: var(--subtext0-light); }
+        .status-message .material-icons { font-size: 3rem; margin-bottom: 1rem; color: var(--overlay0); transition: color var(--timing-medium); }
+        html.light-theme .status-message .material-icons { color: var(--overlay1-light); }
+        .status-message.loading .material-icons { animation: spin 1.8s linear infinite; }
         .status-message.loading p { animation: pulse 1.5s ease-in-out infinite; }
-        .status-message.error .material-icons { color: var(--red); }
-        .status-message.empty .material-icons { color: var(--yellow); }
-
+        .status-message.error .material-icons { color: var(--rosewater); animation: pulse 0.5s 3; } /* Changed error color to rosewater for Monokai feel */
+        html.light-theme .status-message.error .material-icons { color: var(--rosewater-light); } /* Light theme error color */
+        .status-message.empty .material-icons { color: var(--peach); } /* Changed empty color to peach for Monokai feel */
+        html.light-theme .status-message.empty .material-icons { color: var(--peach-light); } /* Light theme empty color */
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
+
+        /* RGB Variables Setup (Adjusted light theme RGB) */
+        :root { --mantle-rgb: 53 54 48; --surface0-rgb: 62 61 50; --surface1-rgb: 74 73 64; --surface2-rgb: 88 91 112; --overlay0-rgb: 117 113 94; --blue-rgb: 102 217 239; --base-rgb: 39 40 34;} /* Monokai Dark RGB approximations */
+        html.light-theme { --mantle-rgb: 240 240 236; --surface0-rgb: 232 232 228; --surface1-rgb: 224 224 220; --surface2-rgb: 214 214 210; --overlay0-rgb: 136 136 128; --blue-rgb: 0 136 170; --base-rgb: 249 248 245;} /* Monokai Light RGB approximations */
 
 
-        /* --- OS Mode Styles --- */
-
-        /* Android Mode */
-        html.android-mode {
-            --font-family: 'Roboto', sans-serif;
-        }
-        html.android-mode .header {
-             /* Slightly different blur/bg */
-             background-color: rgba(var(--mantle-rgb), 0.85);
-             backdrop-filter: blur(8px);
-             -webkit-backdrop-filter: blur(8px);
-             box-shadow: 0 3px 8px rgba(0,0,0,0.18);
-        }
-        html.android-mode .project-card {
-            border-radius: 8px; /* Less rounded */
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15); /* Material-like shadow */
-            border: none; /* Often no border */
-        }
-         html.android-mode .project-card:hover {
-            box-shadow: 0 10px 25px rgba(0,0,0,0.25);
-            border: none;
-         }
-        html.android-mode .tech-tag {
-            border-radius: 4px; /* Less rounded tags */
-            padding: 0.25rem 0.7rem;
-        }
-        /* Add more android specific styles if needed */
-
-
-        /* iOS Mode */
+        /* --- iOS 5 Themed Mode (Improved accuracy) --- */
         html.ios-mode {
-             /* System font stack often used for iOS web */
             --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            --easing-standard: cubic-bezier(0.32, 0.72, 0, 1);
+            --easing-decelerate: cubic-bezier(0.32, 0.72, 0, 1);
         }
          html.ios-mode .header {
-             /* Stronger blur, often lighter/darker bg */
-             background-color: rgba(var(--mantle-rgb), 0.7);
-             backdrop-filter: blur(15px);
-             -webkit-backdrop-filter: blur(15px);
-             border-bottom: 1px solid rgba(var(--overlay0-rgb), 0.2); /* Subtle divider */
-             box-shadow: none;
+             background: linear-gradient(to bottom, #e0e0e0, #f8f8f8); /* Glassy header gradient */
+             border-bottom: 1px solid #bbb;
+             box-shadow: inset 0 1px 0 rgba(255,255,255,0.6), 0 1px 2px rgba(0,0,0,0.1);
+             backdrop-filter: none; -webkit-backdrop-filter: none;
          }
-        html.ios-mode .project-card {
-            border-radius: 14px; /* More rounded */
-            /* Subtler shadow, more background translucency */
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-            background-color: rgba(var(--surface0-rgb), 0.8); /* Translucent bg */
-            backdrop-filter: blur(5px); /* Blur behind card */
-             -webkit-backdrop-filter: blur(5px);
-            border: 1px solid rgba(var(--overlay0-rgb), 0.15);
+        html.ios-mode .header h1 {
+             color: #333; /* Darker text for header */
+             text-shadow: 0 1px 0 rgba(255,255,255,0.8);
+             font-weight: bold;
+         }
+        html.ios-mode .segmented-control {
+            background: linear-gradient(to bottom, #e0e0e0, #f0f0f0);
+            border: 1px solid #bbb;
+            border-radius: 7px;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.7), 0 1px 1px rgba(0,0,0,0.1);
         }
-        html.ios-mode.light-theme .project-card {
-             background-color: rgba(var(--surface0-rgb), 0.7); /* Lighter translucent bg */
-             border: 1px solid rgba(var(--overlay0-rgb), 0.1);
-         }
-         html.ios-mode .project-card:hover {
-             box-shadow: 0 8px 25px rgba(0,0,0,0.12);
-             border-color: rgba(var(--blue-rgb), 0.3); /* Subtle blue border highlight */
-         }
-        html.ios-mode .tech-tag {
-            border-radius: 1rem; /* Fully rounded tags */
-            /* Maybe flatter colors or different gradient? */
+        html.ios-mode .segmented-control-button {
+            color: #333;
+            text-shadow: 0 1px 0 rgba(255,255,255,0.8);
+            font-weight: bold;
         }
-        /* Add more iOS specific styles if needed */
+        html.ios-mode .segmented-control-button:hover, html.ios-mode .segmented-control-button:focus {
+            background: linear-gradient(to bottom, #f0f0f0, #e0e0e0);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.9), 0 1px 1px rgba(0,0,0,0.1);
+        }
+        html.ios-mode .segmented-control-button.active {
+            color: #007aff;
+        }
+        html.ios-mode .segmented-control-button.active::after {
+            background-color: #007aff;
+        }
 
-        /* --- Responsive --- */
+
+        html.ios-mode .project-card {
+            background: linear-gradient(to bottom, #f0f0f0, #e8e8e8);
+            border: 1px solid #bbb;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+         html.ios-mode .project-card:hover {
+             background: linear-gradient(to bottom, #e8e8e8, #f0f0f0);
+             box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+             border-color: #888; /* Slightly darker border on hover */
+         }
+        html.ios-mode .project-image-container {
+             background: #ddd;
+             border-top-left-radius: 8px;
+             border-top-right-radius: 8px;
+        }
+        html.ios-mode .project-icon {
+             color: #007aff; /* Classic iOS blue */
+        }
+         html.ios-mode .project-card:hover .project-icon {
+             color: #00a0ff; /* Brighter blue on hover */
+         }
+         html.ios-mode .project-title {
+             color: #333;
+             font-weight: bold;
+             text-shadow: 0 1px 0 rgba(255,255,255,0.8);
+         }
+         html.ios-mode .project-card:hover .project-title {
+             color: #007aff; /* Title turns blue on hover */
+         }
+         html.ios-mode .project-description {
+             color: #666;
+         }
+         html.ios-mode .project-link {
+             color: #007aff;
+             font-weight: bold;
+             text-shadow: 0 1px 0 rgba(255,255,255,0.8);
+             text-decoration: none; /* Remove underline initially */
+         }
+          html.ios-mode .project-link:hover {
+             color: #00a0ff;
+             text-decoration: underline; /* Underline on hover */
+             transform: none;
+         }
+         html.ios-mode .project-link .material-icons { display: none; }
+        html.ios-mode .tech-tag {
+            background: linear-gradient(to bottom, #ddd, #eee);
+            border: 1px solid #bbb;
+            border-radius: 5px;
+            color: #555;
+            font-weight: bold;
+            text-shadow: 0 1px 0 rgba(255,255,255,0.8);
+            padding: 0.2rem 0.6rem;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.7);
+        }
+        html.ios-mode .tech-tag:hover {
+            background: linear-gradient(to bottom, #eee, #ddd);
+            border-color: #aaa;
+            color: #333;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.9);
+            transform: none;
+        }
+        html.ios-mode .footer {
+            background: linear-gradient(to bottom, #e0e0e0, #f8f8f8); /* Glassy footer gradient */
+            border-top: 1px solid #bbb;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.6), 0 -1px 2px rgba(0,0,0,0.1);
+        }
+
+
+        /* --- Android (Old Android/Holo) Themed Mode (Improved accuracy) --- */
+         html.android-mode {
+             --font-family: 'Roboto', sans-serif;
+             --easing-standard: cubic-bezier(0.4, 0, 0.2, 1);
+             --easing-decelerate: cubic-bezier(0.0, 0, 0.2, 1);
+         }
+        html.android-mode .segmented-control {
+            background-color: #333; /* Darker mode button - closer to Holo */
+            border: 1px solid #222; /* Darker border */
+            border-radius: 2px; /* More square corners */
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 1px 1px rgba(0,0,0,0.3); /* Subtler shadow */
+        }
+        html.android-mode .segmented-control-button {
+            color: #ddd; /* Lighter text */
+            font-weight: normal; /* Default font weight */
+            text-shadow: none; /* No text shadow */
+        }
+        html.android-mode .segmented-control-button:hover, html.android-mode .segmented-control-button:focus {
+            background-color: #444; /* Slightly lighter hover */
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.1), 0 1px 1px rgba(0,0,0,0.4); /* Slightly stronger hover shadow */
+        }
+        html.android-mode .segmented-control-button.active {
+            color: #33B5E5; /* Holo Blue active color */
+            font-weight: bold; /* Bold for active state */
+            text-shadow: 0 0 5px rgba(51, 181, 229, 0.8); /* Glow effect */
+        }
+         html.android-mode .segmented-control-button.active::after {
+            background-color: #33B5E5;
+            height: 3px; /* Thicker active indicator */
+         }
+
+
+         html.android-mode .header {
+             background-color: #303030; /* Darker header background */
+             backdrop-filter: none; -webkit-backdrop-filter: none;
+             box-shadow: 0 1px 4px rgba(0,0,0,0.3); /* Subtler header shadow */
+             border-bottom: 1px solid #0099CC; /* Holo Blue accent border, thinner */
+             padding: 0.6rem 1rem; /* Slightly reduced padding */
+         }
+         html.android-mode .header h1 {
+             color: #eee; /* Lighter header text */
+             font-weight: normal; /* Default font weight */
+             text-shadow: 0 1px 0 rgba(0,0,0,0.3); /* Subtler text shadow */
+             font-size: 1.4rem; /* Slightly smaller header font */
+         }
+
+
+         html.android-mode .project-card {
+            background-color: #282828; /* Even darker card background */
+            border-radius: 4px; /* More square card corners */
+            border: 1px solid #333; /* Darker card border */
+            box-shadow: 0 1px 2px rgba(0,0,0,0.3); /* Subtler card shadow */
+            transition: transform var(--timing-medium) var(--easing-standard),
+                        box-shadow var(--timing-medium) var(--easing-standard),
+                        background-color var(--timing-medium) var(--easing-standard),
+                        border-color var(--timing-medium) var(--easing-standard);
+            padding: 0; /* Remove default padding to allow image to reach edges */
+         }
+          html.android-mode .project-card:hover {
+             transform: translateY(-2px); /* Less pronounced hover lift */
+             box-shadow: 0 2px 4px rgba(0,0,0,0.4); /* Slightly stronger hover shadow */
+             background-color: #383838; /* Lighter hover background */
+             border-color: #444; /* Lighter hover border */
+         }
+        html.android-mode .project-image-container {
+             background: #383838; /* Darker image container */
+             border-top-left-radius: 4px; /* Match card radius */
+             border-top-right-radius: 4px;
+             height: 180px; /* Slightly smaller image container */
+        }
+         html.android-mode .project-icon {
+             color: #0099CC; /* Holo Blue icon */
+             font-size: 1.6rem; /* Slightly smaller icon */
+             opacity: 0.9; /* Slightly muted icon */
+         }
+          html.android-mode .project-card:hover .project-icon {
+             transform: rotate(4deg) scale(1.03); /* Subtler icon hover effect */
+             color: #33B5E5; /* Lighter Holo Blue on hover */
+             opacity: 1; /* Icon fully opaque on hover */
+         }
+         html.android-mode .project-title {
+             color: #ddd; /* Lighter title text */
+             font-weight: normal; /* Default font weight */
+             font-size: 1.1rem; /* Slightly smaller title font */
+         }
+         html.android-mode .project-card:hover .project-title {
+             color: #fff; /* White title on hover */
+             transform: none; /* No hover transform on title */
+         }
+          html.android-mode .project-description {
+             color: #999; /* Muted description text */
+             font-size: 0.9rem; /* Smaller description font */
+             margin-bottom: 1rem; /* Reduced bottom margin */
+         }
+         html.android-mode .project-link {
+             color: #33B5E5; /* Lighter Holo Blue links */
+             font-weight: bold;
+             background-color: rgba(0, 153, 204, 0.15); /* More transparent Holo Blue background */
+             padding: 0.2rem 0.6rem; /* Smaller padding */
+             border-radius: 2px; /* More square link corners */
+             margin-bottom: 1rem; /* Reduced bottom margin */
+             font-size: 0.9rem; /* Smaller link font */
+             text-shadow: none; /* No text shadow on links */
+         }
+          html.android-mode .project-link:hover {
+             background-color: rgba(0, 153, 204, 0.25); /* Slightly more opaque hover background */
+             color: #fff; /* White link text on hover */
+             transform: translateY(-1px); /* Subtler hover lift */
+         }
+          html.android-mode .project-link .material-icons {
+             margin-left: 0.3rem; /* Smaller icon margin */
+             font-size: 1rem; /* Smaller icon size */
+          }
+          html.android-mode .project-link:hover .material-icons {
+             transform: translateX(1px); /* Subtler icon hover transform */
+          }
+        html.android-mode .tech-tag {
+            border-radius: 2px; /* More square tag corners */
+            background-color: #383838; /* Darker tag background */
+            color: #bbb; /* Muted tag text */
+            font-weight: normal; /* Default font weight */
+            padding: 0.1rem 0.5rem; /* Smaller tag padding */
+            border: 1px solid #444; /* Darker tag border */
+            box-shadow: none; /* No tag shadow */
+            font-size: 0.75rem; /* Smaller tag font */
+         }
+        html.android-mode .tech-tag:hover {
+            transform: translateY(-1px); /* Subtler tag hover lift */
+            background-color: #444; /* Lighter tag hover background */
+            color: #ddd; /* Lighter tag hover text */
+            box-shadow: 0 1px 2px rgba(0,0,0,0.2); /* Subtler tag hover shadow */
+        }
+         html.android-mode .footer {
+            background-color: #303030; /* Darker footer background */
+            border-top: 1px solid #0099CC; /* Thinner Holo Blue accent */
+            box-shadow: 0 -1px 4px rgba(0,0,0,0.3); /* Subtler footer shadow */
+            padding: 1.5rem 1rem; /* Reduced footer padding */
+            font-size: 0.85rem; /* Smaller footer font */
+         }
+         html.android-mode .footer p {
+             color: #999; /* Muted footer text */
+         }
+         html.android-mode .social-links a {
+             color: #777; /* Muted social link color */
+             font-size: 1.4rem; /* Slightly smaller social icons */
+             margin: 0 0.6rem; /* Reduced social icon margin */
+         }
+         html.android-mode .social-links a:hover {
+             color: #33B5E5; /* Holo Blue social hover color */
+             transform: translateY(-3px) scale(1.1); /* Subtler social icon hover effect */
+         }
+
+
+         /* --- Vintage (Clipboard) Themed Mode (Improved Accuracy) --- */
+         html.vintage-mode {
+             --font-family: 'Special Elite', monospace; /* Set vintage font */
+         }
+         html.vintage-mode .segmented-control {
+             background-color: var(--vintage-paper);
+             border: 2px solid var(--vintage-clipboard);
+             border-radius: 0; /* Square corners */
+             box-shadow: 3px 3px 5px var(--vintage-shadow); /* Stronger shadow */
+             padding: 0.1rem; /* Add padding to the segmented control itself */
+         }
+         html.vintage-mode .segmented-control-button {
+             background-color: var(--vintage-paper);
+             color: var(--vintage-text);
+             border-radius: 0;
+             box-shadow: none;
+             border-right: 2px solid var(--vintage-clipboard); /* Thicker separators */
+             font-family: 'Special Elite', monospace; /* Vintage font for buttons */
+             font-size: 0.9rem; /* Slightly smaller button font */
+             padding: 0.3rem 0.8rem; /* Adjust button padding */
+         }
+         html.vintage-mode .segmented-control-button:last-child {
+             border-right: none; /* No separator on the last button */
+         }
+         html.vintage-mode .segmented-control-button:hover, html.vintage-mode .segmented-control-button:focus {
+             background-color: #f0e8d8; /* Slightly lighter paper on hover */
+             box-shadow: 4px 4px 7px var(--vintage-shadow); /* Stronger hover shadow */
+         }
+         html.vintage-mode .segmented-control-button.active {
+             color: var(--vintage-highlight);
+             text-shadow: 1px 1px 0 rgba(0,0,0,0.2); /* Add text shadow to active state */
+         }
+         html.vintage-mode .segmented-control-button.active::after {
+             background-color: var(--vintage-highlight);
+             height: 3px; /* Thicker active indicator */
+         }
+
+
+         html.vintage-mode .header {
+             background-color: var(--vintage-clipboard);
+             color: var(--vintage-paper); /* Light text on clipboard */
+             border-bottom: 5px double var(--vintage-accent); /* Double border for vintage feel */
+             box-shadow: 0 4px 12px var(--vintage-shadow); /* Stronger header shadow */
+             backdrop-filter: none; -webkit-backdrop-filter: none;
+             padding: 0.9rem 1.5rem; /* Slightly increased header padding */
+         }
+         html.vintage-mode .header h1 {
+             color: var(--vintage-paper); /* Light header text */
+             font-weight: normal;
+             text-shadow: none;
+             font-family: 'Special Elite', monospace; /* Vintage font for header */
+             font-size: 1.7rem; /* Slightly larger header font */
+             letter-spacing: 0.05em; /* Add letter spacing for typewriter feel */
+         }
+         html.vintage-mode .project-card {
+             background-color: var(--vintage-paper);
+             border: 3px solid var(--vintage-clipboard); /* Thicker card border */
+             border-radius: 0; /* Square corners */
+             box-shadow: 5px 5px 9px var(--vintage-shadow); /* Stronger card shadow */
+             margin-bottom: 1.5rem; /* Add margin between cards */
+         }
+          html.vintage-mode .project-card:hover {
+             transform: translateY(-7px) scale(1.02); /* Slightly more pronounced hover */
+             box-shadow: 6px 6px 11px var(--vintage-shadow); /* Stronger hover card shadow */
+             border-color: var(--vintage-highlight);
+             background-color: #f0e8d8;
+         }
+        html.vintage-mode .project-image-container {
+             background-color: #eee; /* Lighter gray for image container */
+             border-top-left-radius: 0;
+             border-top-right-radius: 0;
+             height: 220px; /* Slightly taller image container */
+             overflow: hidden; /* Ensure image doesn't overflow rounded corners */
+        }
+         html.vintage-mode .project-icon {
+             color: var(--vintage-accent);
+             font-size: 2.3rem; /* Larger icon */
+             opacity: 0.8; /* Slightly muted icon */
+         }
+          html.vintage-mode .project-card:hover .project-icon {
+             transform: rotate(9deg) scale(1.1); /* More pronounced icon hover */
+             color: var(--vintage-highlight);
+             opacity: 1; /* Icon fully opaque on hover */
+         }
+         html.vintage-mode .project-title {
+             color: var(--vintage-text);
+             font-size: 1.4rem; /* Slightly larger title font */
+             font-weight: normal;
+             font-family: 'Special Elite', monospace; /* Vintage font for title */
+             letter-spacing: 0.03em; /* Add letter spacing to title */
+         }
+         html.vintage-mode .project-card:hover .project-title {
+             color: var(--vintage-highlight);
+             transform: none;
+             text-shadow: 1px 1px 0 rgba(0,0,0,0.2); /* Add text shadow on hover */
+         }
+         html.vintage-mode .project-description {
+             color: #444; /* Darker description text */
+             font-family: 'Special Elite', monospace; /* Vintage font for description */
+             font-size: 1rem; /* Slightly larger description font */
+             line-height: 1.7; /* Increase line height for readability */
+         }
+         html.vintage-mode .project-link {
+             color: var(--vintage-accent);
+             font-weight: bold;
+             text-decoration: none;
+             border: 3px solid var(--vintage-accent); /* Thicker link border */
+             padding: 0.3rem 0.7rem; /* Slightly larger link padding */
+             border-radius: 0;
+             transition: background-color var(--timing-fast) var(--easing-standard), color var(--timing-fast) var(--easing-standard), transform var(--timing-medium) var(--easing-sharp), border-color var(--timing-medium) var(--easing-standard);
+             font-family: 'Special Elite', monospace; /* Vintage font for link */
+             font-size: 1rem; /* Slightly larger link font */
+             letter-spacing: 0.02em; /* Add letter spacing to link */
+         }
+          html.vintage-mode .project-link:hover {
+             background-color: var(--vintage-accent);
+             color: var(--vintage-paper);
+             transform: translateX(7px); /* More pronounced link hover */
+             border-color: var(--vintage-highlight);
+             box-shadow: 2px 2px 3px var(--vintage-shadow); /* Add shadow on hover */
+         }
+          html.vintage-mode .project-link .material-icons {
+             margin-left: 0.5rem; /* Slightly larger icon margin */
+             font-size: 1.2rem; /* Slightly larger icon size */
+          }
+          html.vintage-mode .project-link:hover .material-icons {
+             transform: translateX(3px); /* Slightly larger icon hover transform */
+          }
+        html.vintage-mode .tech-tag {
+            border-radius: 0;
+            background-color: var(--vintage-clipboard);
+            color: var(--vintage-paper);
+            font-weight: normal;
+            padding: 0.3rem 0.6rem; /* Slightly larger tag padding */
+            border: 2px solid var(--vintage-clipboard); /* Thicker tag border */
+            box-shadow: 3px 3px 5px var(--vintage-shadow); /* Slightly stronger tag shadow */
+            font-family: 'Special Elite', monospace; /* Vintage font for tags */
+            font-size: 0.9rem; /* Slightly larger tag font */
+            margin-bottom: 0.3rem; /* Add margin below tags */
+         }
+         html.vintage-mode .tech-tag:hover {
+             transform: translateY(-3px); /* More pronounced tag hover lift */
+             background-color: var(--vintage-highlight);
+             color: var(--vintage-text);
+             box-shadow: 4px 4px 7px var(--vintage-shadow); /* Stronger tag hover shadow */
+         }
+         html.vintage-mode .footer {
+            background-color: var(--vintage-clipboard);
+            border-top: 5px double var(--vintage-accent); /* Double border for footer */
+            box-shadow: 0 -4px 12px var(--vintage-shadow); /* Stronger footer shadow */
+            padding: 2.5rem 1rem; /* Slightly increased footer padding */
+            font-size: 0.9rem; /* Slightly larger footer font */
+         }
+         html.vintage-mode .footer p {
+             color: #444;
+             font-family: 'Special Elite', monospace; /* Vintage font for footer text */
+             line-height: 1.8; /* Increase line height in footer */
+         }
+         html.vintage-mode .social-links a {
+             color: var(--vintage-accent);
+             font-size: 1.8rem; /* Larger social icons */
+         }
+         html.vintage-mode .social-links a:hover {
+             color: var(--vintage-highlight);
+             transform: translateY(-7px) scale(1.2); /* More pronounced social icon hover */
+             text-shadow: 1px 1px 0 rgba(0,0,0,0.2); /* Add text shadow on social hover */
+         }
+
+
+        /* --- Responsive Adjustments (No changes needed, but reviewed) --- */
         @media (max-width: 768px) {
             .header { padding: 0.8rem 1rem; }
             .header-left { gap: 1rem; }
             .header h1 { font-size: 1.3rem; }
             #theme-toggle { font-size: 1.6rem; padding: 0.3rem; }
-            .mode-switcher button { font-size: 0.75rem; padding: 0.25rem 0.6rem;}
+            .mode-selector .segmented-control-button { font-size: 0.8rem; padding: 0.3rem 0.7rem;}
             .main-content { padding: 2rem 1.5rem; margin-top: 5.5rem; }
             .projects-container { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2rem; }
-        }
 
+            html.android-mode .project-card { border-radius: 12px; } /* Override for smaller screens if needed */
+            html.ios-mode .project-card { border-radius: 8px; }
+            html.vintage-mode .project-card { border-radius: 0; }
+        }
         @media (max-width: 600px) {
             .header { flex-direction: column; align-items: stretch; gap: 0.5rem; padding: 0.6rem 1rem; }
-            .header-left { justify-content: space-between; } /* Put title and controls on same line */
-            .header-controls { justify-content: flex-end; /* Push controls to the right */ }
-            .main-content { padding: 1.5rem 1rem; margin-top: 7.5rem; } /* Increased margin-top */
+            .header-left { justify-content: space-between; }
+            .header-controls { justify-content: flex-end; }
+            .main-content { padding: 1.5rem 1rem; margin-top: 7.5rem; }
             .projects-container { grid-template-columns: 1fr; gap: 1.5rem; }
-            .project-card { border-radius: 10px; }
+            .project-card { border-radius: 10px; } /* Override for smaller screens if needed */
             .project-image-container { height: 180px; }
             .project-title { font-size: 1.2rem; }
             .footer { padding: 1.5rem 1rem; }
             .social-links a { font-size: 1.5rem; margin: 0 0.6rem; }
-            html.ios-mode .project-card, html.android-mode .project-card {
-                 border-radius: 10px; /* Consistent radius on mobile */
-            }
+
+            html.android-mode .project-card { border-radius: 10px; } /* Override for smaller screens if needed */
+            html.ios-mode .project-card { border-radius: 10px; }
+            html.vintage-mode .project-card { border-radius: 0; }
         }
 
         .material-icons { vertical-align: middle; }
+
     </style>
 </head>
 <body>
     <header class="header">
-        <div class="header-left"> <!-- Group title and mode switcher -->
+        <div class="header-left">
             <h1>Negal's Projects</h1>
-            <div class="mode-switcher">
-                <button data-mode="default" class="active" aria-pressed="true">Default</button>
-                <button data-mode="android" aria-pressed="false">Android</button>
-                <button data-mode="ios" aria-pressed="false">iOS</button>
+            <div class="mode-selector">
+                <div class="segmented-control" role="menubar" aria-label="Mode Selector">
+                    <button class="segmented-control-button active" data-mode="default" role="menuitemradio" aria-checked="true">Default</button>
+                    <button class="segmented-control-button" data-mode="android" role="menuitemradio" aria-checked="false">Android</button>
+                    <button class="segmented-control-button" data-mode="ios" role="menuitemradio" aria-checked="false">iOS</button>
+                    <button class="segmented-control-button" data-mode="vintage" role="menuitemradio" aria-checked="false">Vintage</button>
+                </div>
             </div>
         </div>
-        <div class="header-controls"> <!-- Theme toggle -->
+        <div class="header-controls">
             <button id="theme-toggle" aria-label="Toggle theme">
                 <i class="material-icons">brightness_4</i>
             </button>
@@ -433,55 +846,57 @@
 
     <main class="main-content">
         <div class="projects-container">
-            <div class="status-message loading" role="status" aria-live="polite"> <!-- ARIA for screen readers -->
+            <div class="status-message loading" role="status" aria-live="polite">
                  <i class="material-icons">hourglass_empty</i>
                  <p>Loading Projects...</p>
             </div>
-            <!-- Project cards will be injected here -->
+            <!-- Project cards injected here -->
         </div>
     </main>
 
     <footer class="footer">
         <p>© <span id="year">2024</span> Negal75. All rights reserved.</p>
         <div class="social-links">
-            <a href="https://github.com/Negal75" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
+             <a href="https://github.com/Negal75" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor">
                     <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
                  </svg>
-            </a>
-            <!-- Add other social links here -->
+             </a>
+            <!-- Other social links -->
         </div>
     </footer>
 
     <script>
         const themeToggleButton = document.getElementById('theme-toggle');
-        const modeSwitcherButtons = document.querySelectorAll('.mode-switcher button');
+        const modeButtons = document.querySelectorAll('.segmented-control-button'); // Updated selector
         const projectsContainer = document.querySelector('.projects-container');
         const currentYearSpan = document.getElementById('year');
-        const docElement = document.documentElement; // Cache html element
+        const docElement = document.documentElement;
         const GITHUB_USERNAME = 'Negal75';
+        const PLACEHOLDER_IMAGE_URL = '/images/placeholder.png'; // Define placeholder image URL
 
-        // --- Theme Handling ---
+        // --- Theme Handling (No changes needed) ---
         const userPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
         const savedTheme = localStorage.getItem('theme');
-        let currentTheme = 'dark';
+        let currentTheme = 'dark'; // Default assumption
 
         function applyTheme(theme, initialLoad = false) {
             const newIcon = theme === 'light' ? 'brightness_7' : 'brightness_4';
             const toggleIcon = themeToggleButton.querySelector('i');
-
-            if (!initialLoad && toggleIcon.textContent !== newIcon) {
-                themeToggleButton.classList.add('theme-toggle-transition');
+             if (!initialLoad && toggleIcon.textContent !== newIcon) {
+                const currentIconIsMoon = toggleIcon.textContent === 'brightness_4';
+                toggleIcon.style.transform = `rotate(${currentIconIsMoon ? '-' : ''}90deg) scale(0.5)`;
                 toggleIcon.style.opacity = '0';
-                toggleIcon.style.transform = `rotate(${theme === 'light' ? '-' : ''}180deg) scale(0.5)`;
-                 setTimeout(() => {
-                     toggleIcon.textContent = newIcon;
-                     toggleIcon.style.opacity = '1';
-                     toggleIcon.style.transform = 'rotate(0deg) scale(1)';
-                     setTimeout(() => themeToggleButton.classList.remove('theme-toggle-transition'), 150);
-                 }, 150);
+                setTimeout(() => {
+                    toggleIcon.textContent = newIcon;
+                    toggleIcon.style.transform = `rotate(${currentIconIsMoon ? '' : '-'}90deg) scale(0.5)`;
+                    setTimeout(() => {
+                        toggleIcon.style.opacity = '1';
+                        toggleIcon.style.transform = 'rotate(0deg) scale(1)';
+                    }, 20);
+                }, 150);
             } else {
-                 toggleIcon.textContent = newIcon;
+                toggleIcon.textContent = newIcon;
             }
 
             if (theme === 'light') {
@@ -493,209 +908,222 @@
                 localStorage.setItem('theme', 'dark');
                 currentTheme = 'dark';
             }
-            // Update RGB vars after theme change
             setRgbVariables();
         }
-
         themeToggleButton.addEventListener('click', () => {
             applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
         });
 
         // --- Mode Handling ---
-        const savedMode = localStorage.getItem('uiMode') || 'default';
+        const savedMode = localStorage.getItem('uiMode') || 'default'; // Default mode is now 'default'
+        let currentMode = savedMode; // Track current mode
+
 
         function applyMode(mode) {
-             // Remove existing mode classes
-             docElement.classList.remove('android-mode', 'ios-mode');
-             // Remove active state from all buttons
-             modeSwitcherButtons.forEach(btn => {
+             console.log("Applying mode:", mode); // DEBUGGING LOG - KEPT
+             docElement.classList.remove('android-mode', 'ios-mode', 'vintage-mode');
+             modeButtons.forEach(btn => { // Updated to use modeButtons
                  btn.classList.remove('active');
-                 btn.setAttribute('aria-pressed', 'false');
+                 btn.setAttribute('aria-checked', 'false'); // Uncheck all buttons
              });
 
-             const activeButton = document.querySelector(`.mode-switcher button[data-mode="${mode}"]`);
+             const activeButton = document.querySelector(`.segmented-control-button[data-mode="${mode}"]`); // Updated selector
              if (activeButton) {
                  activeButton.classList.add('active');
-                 activeButton.setAttribute('aria-pressed', 'true');
+                 activeButton.setAttribute('aria-checked', 'true'); // Check the active button
+             } else {
+                 const fallbackButton = document.querySelector('.segmented-control-button[data-mode="default"]'); // Updated selector to default
+                 if (fallbackButton) {
+                     fallbackButton.classList.add('active');
+                     fallbackButton.setAttribute('aria-checked', 'true'); // Check fallback button
+                     mode = fallbackButton.getAttribute('data-mode');
+                 }
              }
 
+             let modeText = ''; // Mode text is no longer used for button text, but might be used elsewhere if needed.
              if (mode === 'android') {
                  docElement.classList.add('android-mode');
+                 modeText = 'Android (Old)';
              } else if (mode === 'ios') {
                  docElement.classList.add('ios-mode');
+                 modeText = 'iOS (iOS 5)';
+             } else if (mode === 'vintage') {
+                 docElement.classList.add('vintage-mode');
+                 modeText = 'Vintage';
+             } else { // Default
+                 modeText = 'Default';
              }
-             // else mode === 'default', no class needed
-
+             console.log("Mode Text to set:", modeText); // DEBUGGING LOG - KEPT
+             // modeButton.textContent = `Mode: ${modeText}`; // REMOVED - No longer needed
+             currentMode = mode; // Update currentMode
              localStorage.setItem('uiMode', mode);
-             // Update RGB vars after mode change (might affect styles)
              setRgbVariables();
          }
 
-         modeSwitcherButtons.forEach(button => {
+
+         modeButtons.forEach(button => { // Updated to use modeButtons
              button.addEventListener('click', () => {
-                 const mode = button.getAttribute('data-mode');
-                 applyMode(mode);
+                 applyMode(button.getAttribute('data-mode'));
              });
          });
 
 
-        // --- Utility: Set RGB Variables ---
+        // --- Utility: Set RGB Variables (Add surface2) ---
         function setRgbVariables() {
-            // Helper to convert hex/rgb() to R G B string
             const getRgbString = (colorValue) => {
-                if (!colorValue) return '0 0 0'; // Default fallback
-                colorValue = colorValue.trim();
-                if (colorValue.startsWith('#')) {
-                    const r = parseInt(colorValue.substring(1, 3), 16);
-                    const g = parseInt(colorValue.substring(3, 5), 16);
-                    const b = parseInt(colorValue.substring(5, 7), 16);
-                    return `${r} ${g} ${b}`;
-                } else if (colorValue.startsWith('rgb')) {
-                     // Extract numbers from rgb(r, g, b)
+                 if (!colorValue) return '0 0 0';
+                 colorValue = colorValue.trim();
+                 let r=0, g=0, b=0;
+                 if (colorValue.startsWith('#')) {
+                     r = parseInt(colorValue.substring(1, 3), 16) || 0;
+                     g = parseInt(colorValue.substring(3, 5), 16) || 0;
+                     b = parseInt(colorValue.substring(5, 7), 16) || 0;
+                 } else if (colorValue.startsWith('rgb')) {
                      const match = colorValue.match(/(\d+),\s*(\d+),\s*(\d+)/);
-                     return match ? `${match[1]} ${match[2]} ${match[3]}` : '0 0 0';
-                }
-                return '0 0 0'; // Fallback
+                     if (match) { [ ,r, g, b] = match.map(Number); }
+                 }
+                 return `${r} ${g} ${b}`;
             };
 
-            // Get computed style *after* theme/mode changes might have affected variables
             const computedStyle = getComputedStyle(docElement);
             docElement.style.setProperty('--mantle-rgb', getRgbString(computedStyle.getPropertyValue('--mantle')));
+            docElement.style.setProperty('--base-rgb', getRgbString(computedStyle.getPropertyValue('--base')));
             docElement.style.setProperty('--surface0-rgb', getRgbString(computedStyle.getPropertyValue('--surface0')));
-            docElement.style.setProperty('--overlay0-rgb', getRgbString(computedStyle.getPropertyValue('--overlay0'))); // Added for iOS border
-            docElement.style.setProperty('--blue-rgb', getRgbString(computedStyle.getPropertyValue('--blue'))); // Added for iOS hover border
+            docElement.style.setProperty('--surface1-rgb', getRgbString(computedStyle.getPropertyValue('--surface1')));
+            docElement.style.setProperty('--surface2-rgb', getRgbString(computedStyle.getPropertyValue('--surface2')));
+            docElement.style.setProperty('--overlay0-rgb', getRgbString(computedStyle.getPropertyValue('--overlay0')));
+            docElement.style.setProperty('--blue-rgb', getRgbString(computedStyle.getPropertyValue('--blue')));
         }
 
-        // --- Project Loading ---
+
+        // --- Project Loading & Card Creation (No changes) ---
         function getProjectIcon(tech) {
-            // (Keep your existing getProjectIcon function)
             if (!tech || tech.length === 0) return 'auto_awesome';
             const primaryTech = tech[0].toLowerCase();
-            const iconMap = {
-                'bash': 'terminal', 'shell': 'terminal', 'python': 'data_object',
-                'html': 'html', 'css': 'css', 'javascript': 'javascript', 'typescript': 'javascript',
-                'java': 'coffee', 'c#': 'code', 'c++': 'code', 'go': 'code', 'rust': 'code',
-                'dockerfile': 'deployed_code', 'vue': 'web', 'react': 'web', 'angular': 'web',
-                'swift': 'smartphone', 'kotlin': 'smartphone', 'ruby': 'code', 'php': 'php',
-            };
+            const iconMap = { 'bash': 'terminal', 'shell': 'terminal', 'python': 'data_object', 'html': 'html', 'css': 'css', 'javascript': 'javascript', 'typescript': 'javascript', 'java': 'coffee', 'c#': 'code', 'c++': 'code', 'go': 'code', 'rust': 'code', 'dockerfile': 'deployed_code', 'vue': 'web', 'react': 'web', 'angular': 'web', 'swift': 'smartphone', 'kotlin': 'smartphone', 'ruby': 'code', 'php': 'php', };
             return iconMap[primaryTech] || 'auto_awesome';
         }
 
-         function handleImageError(imgElement, fallbackSrc) {
-             // (Keep your existing handleImageError function)
-              setTimeout(() => {
-                if (fallbackSrc && imgElement.src !== fallbackSrc && !imgElement.getAttribute('data-fallback-attempted')) {
-                    console.log(`Primary image failed (${imgElement.src}), trying fallback: ${fallbackSrc}`);
-                    imgElement.src = fallbackSrc;
-                    imgElement.setAttribute('data-fallback-attempted', 'true');
+        function handleImageError(imgElement, imageUrls, currentUrlIndex = 0) {
+            if (currentUrlIndex < imageUrls.length -1) {
+                const nextUrlIndex = currentUrlIndex + 1;
+                const nextImageUrl = imageUrls[nextUrlIndex];
+                console.log(`Image failed (${imgElement.src}), trying next: ${nextImageUrl}`);
+                imgElement.src = nextImageUrl;
+                imgElement.onerror = () => handleImageError(imgElement, imageUrls, nextUrlIndex); // Set onerror for the next attempt
+            } else {
+                if (imgElement.src !== PLACEHOLDER_IMAGE_URL) { // Prevent loop if placeholder fails (unlikely)
+                    console.warn(`All project images failed for ${imgElement.alt}. Using placeholder.`);
+                    imgElement.src = PLACEHOLDER_IMAGE_URL;
+                    imgElement.onerror = null; // Clear onerror to prevent further attempts for placeholder
                 } else {
-                    console.warn(`Image loading failed completely for: ${imgElement.src}. Hiding container.`);
-                    const container = imgElement.closest('.project-image-container');
-                    if (container) {
-                         container.style.display = 'none';
-                    }
+                    console.error("Placeholder image failed to load as well:", PLACEHOLDER_IMAGE_URL);
                 }
-             }, 200);
-         }
+                imgElement.parentElement.classList.add('img-error');
+            }
+        }
+
 
         function createProjectCard(repo) {
-            // (Keep your existing createProjectCard function, ensuring it uses the markup structure)
             const card = document.createElement('div');
             card.className = 'project-card';
 
             const iconName = getProjectIcon(repo.tech);
-            const description = repo.description ? repo.description.replace(/:.*:/g, '') : 'No description provided.';
+            const description = repo.description ? repo.description.replace(/:.*:/g, '').trim() : 'No description provided.';
             const escapedDescription = description.replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            const imageName = 'preview'; // Base image name
+            const imageExtensions = ['png', 'jpg', 'jpeg']; // Order to try extensions
+            const screenshotName = 'screenshot';
+            const screenshotExtensions = ['png', 'jpg', 'jpeg'];
 
-            const primaryImage = `https://raw.githubusercontent.com/${repo.owner}/${repo.name}/${repo.defaultBranch}/preview.png`;
-            const fallbackImage = `https://raw.githubusercontent.com/${repo.owner}/${repo.name}/${repo.defaultBranch}/screenshot.png`;
+            const imageUrls = [];
+            imageExtensions.forEach(ext => {
+                imageUrls.push(`https://raw.githubusercontent.com/${repo.owner}/${repo.name}/${repo.defaultBranch}/${imageName}.${ext}`);
+            });
+            screenshotExtensions.forEach(ext => {
+                imageUrls.push(`https://raw.githubusercontent.com/${repo.owner}/${repo.name}/${repo.defaultBranch}/${screenshotName}.${ext}`);
+            });
+            imageUrls.push(PLACEHOLDER_IMAGE_URL); // Add placeholder as last fallback
 
-            const allTech = Array.from(new Set([repo.language, ...(repo.topics || [])])).filter(Boolean);
 
-            const markup = `
+            card.innerHTML = `
                 <div class="project-image-container">
-                    <img src="${primaryImage}"
-                         alt="${repo.name} preview"
-                         class="project-image"
-                         onload="this.classList.add('loaded')"
-                         onerror="handleImageError(this, '${fallbackImage}')"
-                         loading="lazy">
+                    <img src="${imageUrls[0]}" alt="${repo.name} preview" class="project-image" onload="this.classList.add('loaded')" onerror="handleImageError(this, imageUrls)" loading="lazy">
                 </div>
                 <div class="project-content">
                      <div class="project-header">
                         <i class="material-icons project-icon" aria-hidden="true">${iconName}</i>
-                        <h2 class="project-title">${repo.name}</h2>
+                        <h2 class="project-title"></h2>
                     </div>
-                    <p class="project-description" title="${escapedDescription}">${description}</p>
+                    <p class="project-description" title="${escapedDescription}"></p>
                     <a href="${repo.url}" class="project-link" target="_blank" rel="noopener noreferrer">
                         View Project <i class="material-icons">arrow_forward</i>
                     </a>
                     <div class="project-tech">
-                        ${allTech.map(tag => `<span class="tech-tag">${tag}</span>`).join('')}
+                        ${repo.tech.map(tag => `<span class="tech-tag">${tag}</span>`).join('')}
                     </div>
-                </div>
-            `;
-
-            card.innerHTML = markup;
+                </div>`;
+            card.querySelector('.project-title').textContent = repo.name;
+            card.querySelector('.project-description').textContent = description;
             return card;
         }
 
-       async function fetchRepositories() {
-            // (Keep your existing fetchRepositories function, ensuring it uses the new status message classes)
-            projectsContainer.innerHTML = `
-                 <div class="status-message loading" role="status" aria-live="polite">
-                     <i class="material-icons">hourglass_empty</i>
-                     <p>Loading Projects...</p>
-                 </div>`;
+        // --- Scroll Animation (No changes needed) ---
+        let observer;
+        function observeCards() {
+            const cards = projectsContainer.querySelectorAll('.project-card:not(.is-visible)');
+            if (!observer) {
+                 observer = new IntersectionObserver((entries, obs) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            setTimeout(() => { entry.target.classList.add('is-visible'); }, 100);
+                            obs.unobserve(entry.target);
+                        }
+                    });
+                }, { rootMargin: '0px', threshold: 0.1 });
+            }
+             cards.forEach(card => observer.observe(card));
+         }
 
+       // --- Fetch Repositories (No changes needed) ---
+       async function fetchRepositories() {
+            projectsContainer.innerHTML = `<div class="status-message loading" role="status" aria-live="polite"><i class="material-icons">hourglass_empty</i><p>Loading Projects...</p></div>`;
             try {
                 const response = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=pushed&per_page=100`);
                 if (!response.ok) {
-                     let errorMsg = `GitHub API request failed: ${response.status} ${response.statusText}`;
-                     try { const errorData = await response.json(); if (errorData.message) { errorMsg += ` - ${errorData.message}`; } } catch (e) {}
+                     let errorMsg = `GitHub API Error: ${response.status} ${response.statusText}`;
+                     try { const errorData = await response.json(); if (errorData.message) { errorMsg += ` - ${errorData.message}`; } } catch (e) {/* Ignore */}
                     throw new Error(errorMsg);
                 }
                 const data = await response.json();
-                const activeRepos = data.filter(repo => !repo.fork && !repo.archived);
+                const activeRepos = data.filter(repo => !repo.fork && !repo.archived && repo.size > 0);
 
-                const repositories = activeRepos.map(repo => ({
-                    name: repo.name, description: repo.description, url: repo.html_url,
-                    language: repo.language, topics: repo.topics || [], owner: GITHUB_USERNAME,
-                    defaultBranch: repo.default_branch, tech: [repo.language, ...(repo.topics || [])].filter(Boolean) // Pass combined tech for icon logic
-                }));
-
-                projectsContainer.innerHTML = ''; // Clear loading
-
-                if (repositories.length === 0) {
-                     projectsContainer.innerHTML = `<div class="status-message empty" role="status" aria-live="polite"><i class="material-icons">info</i><p>No public, non-forked repositories found.</p></div>`;
-                } else {
-                    repositories.forEach((repo, index) => {
-                        const cardElement = createProjectCard(repo);
-                        projectsContainer.appendChild(cardElement);
-                        setTimeout(() => { cardElement.classList.add('animate-in'); }, index * 100);
-                    });
+                if (activeRepos.length === 0) {
+                     projectsContainer.innerHTML = `<div class="status-message empty" role="status" aria-live="polite"><i class="material-icons">info_outline</i><p>No public, non-forked repositories found for ${GITHUB_USERNAME}.</p></div>`;
+                     return;
                 }
-
+                 projectsContainer.innerHTML = '';
+                 const fragment = document.createDocumentFragment();
+                 activeRepos.forEach(repoData => {
+                    const repo = { name: repoData.name, description: repoData.description, url: repoData.html_url, language: repoData.language, topics: repoData.topics || [], owner: GITHUB_USERNAME, defaultBranch: repoData.default_branch || 'main', tech: [repoData.language, ...(repoData.topics || [])].filter(Boolean) };
+                    const cardElement = createProjectCard(repo);
+                    fragment.appendChild(cardElement);
+                });
+                projectsContainer.appendChild(fragment);
+                observeCards();
             } catch (error) {
                 console.error('Error fetching repositories:', error);
-                projectsContainer.innerHTML = `
-                     <div class="status-message error" role="alert" aria-live="assertive">
-                         <i class="material-icons">error_outline</i>
-                         <p>Error loading projects.</p>
-                         <p><small>${error.message}</small></p>
-                     </div>`;
+                projectsContainer.innerHTML = `<div class="status-message error" role="alert" aria-live="assertive"><i class="material-icons">error_outline</i><p>Failed to load projects.</p><p><small>${error.message}</small></p></div>`;
             }
         }
 
         // --- Initialisation ---
-        currentYearSpan.textContent = new Date().getFullYear();
-
-        // Apply initial theme FIRST, then mode, then fetch data
-        applyTheme(savedTheme || (userPrefersDark ? 'dark' : 'light'), true);
-        applyMode(savedMode); // Apply saved or default mode
-        fetchRepositories(); // Fetch data after theme/mode are set
-
-        // No need for MutationObserver for RGB vars, call setRgbVariables() after theme/mode changes.
+        document.addEventListener('DOMContentLoaded', () => {
+            currentYearSpan.textContent = new Date().getFullYear();
+            applyTheme(savedTheme || (userPrefersDark ? 'dark' : 'light'), true);
+            applyMode(savedMode); // Apply saved mode on load
+            fetchRepositories();
+        });
 
     </script>
 </body>
