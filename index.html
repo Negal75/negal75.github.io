@@ -818,6 +818,16 @@
             html.android-mode .project-card { border-radius: 10px; } /* Override for smaller screens if needed */
             html.ios-mode .project-card { border-radius: 10px; }
             html.vintage-mode .project-card { border-radius: 0; }
+
+            /* --- VINTAGE MODE MOBILE FIX --- */
+            html.vintage-mode .header-left {
+                flex-direction: column; /* Stack header elements vertically on mobile in vintage mode */
+                align-items: flex-start; /* Align items to the start */
+            }
+            html.vintage-mode .segmented-control {
+                margin-top: 0.5rem; /* Add some top margin to segmented control when stacked */
+                width: 100%; /* Make segmented control full width on mobile */
+            }
         }
 
         .material-icons { vertical-align: middle; }
